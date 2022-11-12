@@ -1,18 +1,16 @@
 'use client'
 import "./globals.css";
-import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
-import { useState } from "react";
+// import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
+// import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
+// import { useState } from "react";
 
 export default function RootLayout({
   children,
-  Component,
-  pageProps,
-}: AppProps<{
+}: {
   children: React.ReactNode;
-  initialSession: Session;
-}>) {
-  const [supabaseClient] = useState(() => createBrowserSupabaseClient());
+  // initialSession: Session;
+}) {
+  // const [supabaseClient] = useState(() => createBrowserSupabaseClient());
 
   return (
     <html lang="en">
