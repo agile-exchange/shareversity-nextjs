@@ -3,6 +3,7 @@ import supabase from "../../utils/supabase";
 import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
 
+
 export default function Form() {
   const [inputs, setInputs] = useState({
     jobName: "",
@@ -59,7 +60,7 @@ export default function Form() {
           <label>
             Job Name <br />
             <input
-              required
+            required
               className={styles.input}
               type="text"
               name="jobName"

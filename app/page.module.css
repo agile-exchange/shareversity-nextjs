@@ -83,6 +83,7 @@
   padding: 1rem;
   margin: 1rem;
   width: 30%;
+  min-width: 90%;
 }
 /* added by me */
 .submit {
@@ -111,17 +112,16 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
+/* added by me */
 
 .navitem {
   margin: 0 2rem;
   font-size: 1.3rem;
-
 }
+/* added by me */
 
 .navitem:hover {
   color: #0070f3;
-
-
 }
 
 .card {
