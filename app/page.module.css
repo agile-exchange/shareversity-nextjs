@@ -76,6 +76,42 @@
   max-width: 1200px;
 }
 
+/* added by me */
+.form {
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+  width: 30%;
+}
+/* added by me */
+.submit {
+  background-color: #0070f3; /* Blue */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  width: 100%;
+  margin-left: auto;
+}
+/* added by me */
+
+.input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 .card {
   margin: 1rem;
   padding: 1.5rem;
