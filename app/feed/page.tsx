@@ -1,7 +1,7 @@
 import styles from "../page.module.css";
 import supabase from "../../utils/supabase";
 export const revalidate = 0; // revalidates on every request 
-// import "server-only";
+import "server-only";
 
 async function getData() {
   // add error handling later
