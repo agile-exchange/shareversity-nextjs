@@ -6,13 +6,15 @@ export default function FeedLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className={styles.navbar}>
-      <a href="/">Home</a> | 
-      
-      <a href="/feed">Feed</a>
+    <section>
+      <a className={styles.navitem} href="/">
+        Home
+      </a>
+      |
+      <a className={styles.navitem} href="/feed">
+        Feed
+      </a>
       {children}
     </section>
   );
 }
-
-

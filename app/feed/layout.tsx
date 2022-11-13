@@ -7,9 +7,15 @@ export default function FeedLayout({
   children: React.ReactNode;
 }) {
   return (
-    <nav >
-      <a  href="/">Home</a> | <a href="/posts">Post</a>
+    <section>
+      <a className={styles.navitem} href="/">
+        Home
+      </a>
+      |
+      <a className={styles.navitem} href="/posts">
+        Post
+      </a>
       {children}
-    </nav>
+    </section>
   );
 }
