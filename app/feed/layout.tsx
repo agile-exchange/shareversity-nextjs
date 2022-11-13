@@ -13,7 +13,7 @@ export default function FeedLayout({
       </a>
       |
       <a className={styles.navitem} href="/posts">
-        Post
+        Create Post
       </a>
       {children}
     </section>
