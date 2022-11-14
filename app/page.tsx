@@ -1,12 +1,12 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from "next/image";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href='/'>Shareversity</a>
+          Welcome to <a href="/">Shareversity</a>
         </h1>
 
         <p className={styles.description}>let's get started!</p>
@@ -31,7 +31,6 @@ export default function Home() {
             <h2>Sign in &rarr;</h2>
              <p>Deploy your Next.js site to a public URL with Vercel.</p> 
           </a> */}
-          
         </div>
       </main>
 
