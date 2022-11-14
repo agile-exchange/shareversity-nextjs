@@ -9,5 +9,5 @@ async function getData() {
 
 export default async function SSR() {
   const { data } = await getData();
-  return <div>{JSON.stringify(data, null, 2)}</div>;
+  return JSON.stringify(data, null, 2);
 }
