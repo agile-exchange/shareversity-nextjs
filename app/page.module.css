@@ -76,7 +76,7 @@
   max-width: 1200px;
 }
 
-/* added by me */
+/* added by jmatias */
 .form {
   border: 1px solid #eaeaea;
   border-radius: 10px;
@@ -84,7 +84,8 @@
   margin: 1rem;
   width: 30%;
 }
-/* added by me */
+
+/* added by jmatias */
 .submit {
   background-color: #0070f3; /* Blue */
   border: none;
@@ -100,8 +101,8 @@
   width: 100%;
   margin-left: auto;
 }
-/* added by me */
 
+/* added by jmatias */
 .input {
   width: 100%;
   padding: 12px 20px;
@@ -111,13 +112,12 @@
   border-radius: 4px;
   box-sizing: border-box;
 }
-/* added by me */
 
+/* added by @jmatias */
 .navitem {
   margin: 0 2rem;
   font-size: 1.3rem;
 }
-/* added by me */
 
 .card {
   margin: 1rem;

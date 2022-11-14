@@ -20,13 +20,14 @@ export default async function Feed() {
           <a href="/">Feed</a>
         </h1>
         <div className={styles.grid}>
-          {data.map((post:any) => (
+          {data.map((post: any) => (
             <div className={styles.grid}>
-              <h3 className={styles.card}>{post.jobName}</h3>
+              <div className={styles.card}>
+                <h1>{post.jobName} </h1>
+              </div>
             </div>
           ))}
         </div>
-        
       </main>
     </>
   );
