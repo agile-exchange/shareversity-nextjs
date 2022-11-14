@@ -118,7 +118,9 @@
   margin: 0 2rem;
   font-size: 1.3rem;
 }
-
+.navitem:hover {
+  color: #0070f3;
+}
 .card {
   margin: 1rem;
   padding: 1.5rem;

@@ -24,6 +24,7 @@ export default async function Feed() {
             <div className={styles.grid}>
               <div className={styles.card}>
                 <h1>{post.jobName} </h1>
+                <p>{post.description}</p>
               </div>
             </div>
           ))}
