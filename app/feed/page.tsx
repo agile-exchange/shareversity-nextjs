@@ -23,6 +23,7 @@ export default async function Feed() {
           {data.map((post:any) => (
             <div className={styles.grid}>
               <h3 className={styles.card}>{post.jobName}</h3>
+              <p className={styles.card}>{post.jobDescription}</p>
             </div>
           ))}
         </div>
