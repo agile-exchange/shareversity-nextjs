@@ -14,7 +14,7 @@ export default function RootLayout({
 
   return (
     <>
-      <div className={styles.navbar}>
+      {/* <div className={styles.navbar}>
         <Link className={styles.navitem} href="/">
           Home
         </Link>
@@ -27,10 +27,10 @@ export default function RootLayout({
         <Link className={styles.login} href="/">
           Login
         </Link>
-       
-      </div>
-      
-      <body>{children}</body>
+      </div> */}
+      <html>
+        <body>{children}</body>
+      </html>
     </>
   );
 }
