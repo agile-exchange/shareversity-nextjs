@@ -36,16 +36,6 @@ export default function Form() {
     ]);
     console.log({ data, error });
 
-    // clear form
-    // setInputs({
-    //   jobName: "",
-    //   description: "",
-    //   category: "",
-    //   field: "",
-    //   academicLevel: "",
-    //   location: "",
-    // });
-
     // redirect to feed
     router.push("/feed");
   };

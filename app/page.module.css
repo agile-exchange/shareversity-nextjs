@@ -118,9 +118,37 @@
   margin: 0 2rem;
   font-size: 1.3rem;
 }
+
+/* added by @andrew */
 .navitem:hover {
   color: #0070f3;
 }
+
+.navbar{
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin: 1rem;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.login{
+  margin-left: auto;
+  flex-wrap: wrap;
+  margin-right: 3rem;
+  font-size: 1.3rem;
+
+}
+
+.login:hover {
+  color: #0070f3;
+}
+
 .card {
   margin: 1rem;
   padding: 1.5rem;

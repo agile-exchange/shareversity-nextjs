@@ -1,51 +1,38 @@
 'use client'
+import Link from "next/link";
 import "./globals.css";
-// import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
-// import { SessionContextProvider, Session } from "@supabase/auth-helpers-react";
-// import { useState } from "react";
+import styles from "./page.module.css";
+
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-  // initialSession: Session;
+  
 }) {
-  // const [supabaseClient] = useState(() => createBrowserSupabaseClient());
+ 
 
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      {/* <SessionContextProvider
-        supabaseClient={supabaseClient}
-        initialSession={pageProps.initialSession}
-      >
-        <Component {...pageProps} />
-      </SessionContextProvider> */}
+    <>
+      <div className={styles.navbar}>
+        <Link className={styles.navitem} href="/">
+          Home
+        </Link>
+        <Link className={styles.navitem} href="/posts">
+          Create Post
+        </Link>
+        <Link className={styles.navitem} href="/feed">
+          Feed
+        </Link>
+        <Link className={styles.login} href="/login">
+          Login
+        </Link>
+       
+      </div>
+      
       <body>{children}</body>
-    </html>
+    </>
   );
 }
-
-// function MyApp({
-//   Component,
-//   pageProps,
-// }: AppProps<{
-//   initialSession: Session;
-// }>) {
-//   const [supabaseClient] = useState(() => createBrowserSupabaseClient());
-
-//   return (
-//     <SessionContextProvider
-//       supabaseClient={supabaseClient}
-//       initialSession={pageProps.initialSession}
-//     >
-//       <Component {...pageProps} />
-//     </SessionContextProvider>
-//   );
-// }
 
 
