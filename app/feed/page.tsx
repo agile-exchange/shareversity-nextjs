@@ -22,12 +22,9 @@ export default async function Feed() {
         </h1>
         <div className={styles.grid}>
           {data.map((post: any) => (
-         
             <div className={styles.grid}>
               <div className={styles.card}>
                 <h1>{post.jobName} </h1>
-                <p>{post.category}</p>
-                <p className={styles.description}>{post.description}</p>
               </div>
             </div>
           ))}
@@ -37,9 +34,9 @@ export default async function Feed() {
   );
 }
 
-            //         jobName: inputs.jobName,
-            //         description: inputs.description,
-            //         category: inputs.category,
-            //         field: inputs.field,
-            //         academicLevel: inputs.academicLevel,
-            //         location: inputs.location,
+//         jobName: inputs.jobName,
+//         description: inputs.description,
+//         category: inputs.category,
+//         field: inputs.field,
+//         academicLevel: inputs.academicLevel,
+//         location: inputs.location,

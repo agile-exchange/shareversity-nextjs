@@ -160,7 +160,6 @@
   max-width: 300px;
 }
 
-
 .card:hover,
 .card:focus,
 .card:active {
@@ -197,14 +196,14 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
   }
   .title a {
     background: linear-gradient(180deg, #0070f3 0%, #0153af 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
   }
   .card,
   .footer {
