@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
 
 export default function Form() {
+  // define variables, any future fields need to be added here
   const [inputs, setInputs] = useState({
     jobName: "",
     description: "",
@@ -13,6 +14,7 @@ export default function Form() {
     location: "",
   });
 
+  // changes the input values to the values in the form
   const handleChange = (event: any) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -20,6 +22,7 @@ export default function Form() {
   };
   const router = useRouter();
 
+  // submits the form to the database
   const handleSubmit = async (event: any) => {
     event.preventDefault();
 
@@ -40,6 +43,8 @@ export default function Form() {
     router.push("/feed");
   };
 
+  // Input types
+  // https://www.w3schools.com/html/html_form_input_types.asp
   return (
     <>
       <div className={styles.form}>

@@ -1,8 +1,9 @@
 import styles from "../page.module.css";
 import supabase from "../../utils/supabase";
-export const revalidate = 0; // revalidates on every request 
+export const revalidate = 0; // revalidates on every request
 import "server-only";
 
+// Fetches data on each request
 async function getData() {
   // add error handling later
   // here we are getting all the data from the posts table
@@ -10,7 +11,7 @@ async function getData() {
   return { data };
 }
 
-// data should not be any, need to figure out the best way to declare it, line 15
+// ! data should not be any, need to figure out the best way to declare it, line 15
 export default async function Feed() {
   const { data }: any = await getData();
   return (
@@ -21,10 +22,12 @@ export default async function Feed() {
         </h1>
         <div className={styles.grid}>
           {data.map((post: any) => (
+         
             <div className={styles.grid}>
               <div className={styles.card}>
                 <h1>{post.jobName} </h1>
-                <p>{post.description}</p>
+                <p>{post.category}</p>
+                <p className={styles.description}>{post.description}</p>
               </div>
             </div>
           ))}
@@ -33,3 +36,10 @@ export default async function Feed() {
     </>
   );
 }
+
+            //         jobName: inputs.jobName,
+            //         description: inputs.description,
+            //         category: inputs.category,
+            //         field: inputs.field,
+            //         academicLevel: inputs.academicLevel,
+            //         location: inputs.location,

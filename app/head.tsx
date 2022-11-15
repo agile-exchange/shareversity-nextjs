@@ -6,5 +6,5 @@ export default function Head() {
       <meta name="description" content="Find jobs and research opportunities" />
       <link rel="icon" href="/favicon.ico" />
     </>
-  )
+  );
 }
