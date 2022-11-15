@@ -13,25 +13,25 @@ export default function RootLayout({
  
 
   return (
-    <>
-      {/* <div className={styles.navbar}>
-        <Link className={styles.navitem} href="/">
-          Home
-        </Link>
-        <Link className={styles.navitem} href="/posts">
-          Create Post
-        </Link>
-        <Link className={styles.navitem} href="/feed">
-          Feed
-        </Link>
-        <Link className={styles.login} href="/">
-          Login
-        </Link>
-      </div> */}
-      <html>
-        <body>{children}</body>
-      </html>
-    </>
+    <html>
+      <body>
+        <div className={styles.navbar}>
+          <Link className={styles.navitem} href="/">
+            Home
+          </Link>
+          <Link className={styles.navitem} href="/posts">
+            Create Post
+          </Link>
+          <Link className={styles.navitem} href="/feed">
+            Feed
+          </Link>
+          <Link className={styles.login} href="/">
+            Login
+          </Link>
+        </div>
+        {children}
+      </body>
+    </html>
   );
 }
 
