@@ -42,6 +42,12 @@ export default function Form() {
         field: inputs.field,
         academicLevel: inputs.academicLevel,
         location: inputs.location,
+        skills: inputs.skills,
+        schedule: inputs.schedule,
+        institution: inputs.institution,
+        department: inputs.department,
+        application_link: inputs.application_link,
+        compensation: inputs.compensation,
       },
     ]);
     console.log({ data, error });
@@ -230,7 +236,7 @@ export default function Form() {
               required
               className={styles.input}
               type="text"
-              name="skills"
+              name="department"
               value={inputs.department || ""}
               onChange={handleChange}
             />
