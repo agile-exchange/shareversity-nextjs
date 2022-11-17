@@ -3,11 +3,14 @@ import Link from "next/link";
 import "./globals.css";
 import styles from "./page.module.css";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout(
+  {
+    children,
+  }: {
+    children: React.ReactNode;
+  }
+) {
+
   return (
     <html>
       <body>
@@ -23,12 +26,11 @@ export default function RootLayout({
           <Link className={styles.navitem} href="/feed">
             Feed
           </Link>
-
+          {/* 
           <Link className={styles.login} href="/">
             Login
-          </Link>
+          </Link> */}
         </div>
-
         {children}
       </body>
     </html>
