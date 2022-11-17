@@ -17,6 +17,7 @@ export default function Form() {
     institution: "",
     department: "",
     application_link: "",
+    compensation: "",
   });
 
   // changes the input values to the values in the form
@@ -169,7 +170,7 @@ export default function Form() {
           <br />
 
           <label>
-           Skills <br />
+            Skills <br />
             <input
               required
               className={styles.input}
@@ -184,7 +185,7 @@ export default function Form() {
           <br />
 
           <label>
-           Schedule <br />
+            Schedule <br />
             <input
               required
               className={styles.input}
@@ -199,7 +200,7 @@ export default function Form() {
           <br />
 
           <label>
-           Institution <br />
+            Institution <br />
             <input
               required
               className={styles.input}
@@ -214,7 +215,7 @@ export default function Form() {
           <br />
 
           <label>
-           Department <br />
+            Department <br />
             <input
               required
               className={styles.input}
@@ -229,13 +230,27 @@ export default function Form() {
           <br />
 
           <label>
-           Application Link <br />
+            Application Link <br />
             <input
               required
               className={styles.input}
               type="text"
               name="application_link"
               value={inputs.application_link || ""}
+              onChange={handleChange}
+            />
+          </label>
+
+          <br />
+          <br />
+          <label>
+            Compensation <br />
+            <input
+              required
+              className={styles.input}
+              type="text"
+              name="compensation"
+              value={inputs.compensation || ""}
               onChange={handleChange}
             />
           </label>
