@@ -24,7 +24,7 @@ export default function RootLayout(
           </Link>
 
           <Link className={styles.navitem} href="/feed">
-            Feed
+            Job Opportunities
           </Link>
           {/* 
           <Link className={styles.login} href="/">

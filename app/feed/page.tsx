@@ -18,7 +18,7 @@ export default async function Feed() {
     <>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          <a href="/">Feed</a>
+          <a href="/">Job Opportunities</a>
         </h1>
         <div className={styles.grid}>
           {data.map((post: any) => (
