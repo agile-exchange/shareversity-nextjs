@@ -8,6 +8,7 @@ export default function Form() {
   const [inputs, setInputs] = useState({
     jobName: "",
     description: "",
+    headline: "",
     category: "",
     field: "",
     academicLevel: "",
@@ -68,7 +69,17 @@ export default function Form() {
               onChange={handleChange}
             />
           </label>
-
+          <br />
+          <br />
+          <label>
+            Headline <br />
+            <textarea
+              className={styles.input}
+              name="headline"
+              value={inputs.headline || ""}
+              onChange={handleChange}
+            />
+          </label>
           <br />
           <br />
 
@@ -84,7 +95,6 @@ export default function Form() {
 
           <br />
           <br />
-
           <label>
             Job Category <br />
             <select
