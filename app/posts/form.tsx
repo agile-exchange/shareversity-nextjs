@@ -12,6 +12,11 @@ export default function Form() {
     field: "",
     academicLevel: "",
     location: "",
+    skills: "",
+    schedule: "",
+    institution: "",
+    department: "",
+    application_link: "",
   });
 
   // changes the input values to the values in the form
@@ -162,6 +167,82 @@ export default function Form() {
 
           <br />
           <br />
+
+          <label>
+           Skills <br />
+            <input
+              required
+              className={styles.input}
+              type="text"
+              name="skills"
+              value={inputs.skills || ""}
+              onChange={handleChange}
+            />
+          </label>
+
+          <br />
+          <br />
+
+          <label>
+           Schedule <br />
+            <input
+              required
+              className={styles.input}
+              type="text"
+              name="schedule"
+              value={inputs.schedule || ""}
+              onChange={handleChange}
+            />
+          </label>
+
+          <br />
+          <br />
+
+          <label>
+           Institution <br />
+            <input
+              required
+              className={styles.input}
+              type="text"
+              name="institution"
+              value={inputs.institution || ""}
+              onChange={handleChange}
+            />
+          </label>
+
+          <br />
+          <br />
+
+          <label>
+           Department <br />
+            <input
+              required
+              className={styles.input}
+              type="text"
+              name="skills"
+              value={inputs.department || ""}
+              onChange={handleChange}
+            />
+          </label>
+
+          <br />
+          <br />
+
+          <label>
+           Application Link <br />
+            <input
+              required
+              className={styles.input}
+              type="text"
+              name="application_link"
+              value={inputs.application_link || ""}
+              onChange={handleChange}
+            />
+          </label>
+
+          <br />
+          <br />
+
           <input className={styles.submit} type="submit" />
         </form>
       </div>
