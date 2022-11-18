@@ -25,8 +25,10 @@ export default async function Feed() {
             <div className={styles.grid}>
               {/* // feed posts are displayed here  */}
               <div className={styles.card}>
-                <h1 className="card-title">{post.jobName} </h1>
-                <p>{post.description}</p>
+                <h1 className="card-title">{post.jobName}</h1>
+                <h2>{post.institution}</h2>
+                <h3>{post.isRemote} in {post.location}</h3>
+                <p className="card-description"> <li>{post.description}</li></p>
               </div>
             </div>
           ))}
@@ -35,10 +37,3 @@ export default async function Feed() {
     </>
   );
 }
-
-//         jobName: inputs.jobName,
-//         description: inputs.description,
-//         category: inputs.category,
-//         field: inputs.field,
-//         academicLevel: inputs.academicLevel,
-//         location: inputs.location,

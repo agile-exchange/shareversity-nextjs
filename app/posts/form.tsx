@@ -12,6 +12,7 @@ export default function Form() {
     category: "",
     field: "",
     academicLevel: "",
+    isRemote: "",
     location: "",
     skills: "",
     schedule: "",
@@ -41,6 +42,7 @@ export default function Form() {
         category: inputs.category,
         field: inputs.field,
         academicLevel: inputs.academicLevel,
+        isRemote: inputs.isRemote,
         location: inputs.location,
         skills: inputs.skills,
         schedule: inputs.schedule,
@@ -116,6 +118,22 @@ export default function Form() {
               <option value="Fellowship">Fellowship</option>
               <option value="Data Analyst">Data Analyst</option>
               <option value="Voluntary">Voluntary</option>
+            </select>
+          </label>
+
+          <br />
+          <br />
+          <label>
+            Job Type <br />
+            <select
+              className={styles.input}
+              name="isRemote"
+              value={inputs.category || ""}
+              onChange={handleChange}
+            >
+              <option value="">Select Type</option>
+              <option value="Remote">Remote</option>
+              <option value="On Site">On Site</option>
             </select>
           </label>
 
