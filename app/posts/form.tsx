@@ -2,28 +2,7 @@ import { useState } from "react";
 import supabase from "../../utils/supabase";
 import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
-
-
-// create a function that capitalizes the first letter of every word in a string except for the words "in" and "of"
-function titleCase(str: string) {
-  return str
-    .toLowerCase()
-    .split(" ")
-    .map((word) => {
-      if (word === "in" || word === "of" || word === "the") {
-        return word;
-      } else {
-        return word[0].toUpperCase() + word.slice(1);
-      }
-    })
-    .join(" ");
-}
-
-// create a function that checks if that a string is less than 100 characters long and returns only the first 100 characters if not
-function headlineLength(str: string) {
-  return str.length > 100 ? str.substring(0, 97) + "..." : str;
-}
-
+import { titleCase, headlineLength } from "./validate";
 
 
 export default function Form() {
@@ -74,6 +53,9 @@ export default function Form() {
         department: inputs.department,
         application_link: inputs.application_link,
         compensation: inputs.compensation,
+        // contact info
+        // change order of fields
+        //
       },
     ]);
     console.log({ data, error });
@@ -89,7 +71,7 @@ export default function Form() {
       <div className={styles.form}>
         <form onSubmit={handleSubmit}>
           <br />
-
+          <h1>Job details</h1>
           <label>
             Job Name <br />
             <input
@@ -148,6 +130,8 @@ export default function Form() {
 
           <br />
           <br />
+          <h1>Other details</h1>
+
           <label>
             Job Type <br />
             <select
