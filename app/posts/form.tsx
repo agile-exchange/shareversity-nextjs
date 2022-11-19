@@ -3,6 +3,29 @@ import supabase from "../../utils/supabase";
 import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
 
+
+// create a function that capitalizes the first letter of every word in a string except for the words "in" and "of"
+function titleCase(str: string) {
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => {
+      if (word === "in" || word === "of" || word === "the") {
+        return word;
+      } else {
+        return word[0].toUpperCase() + word.slice(1);
+      }
+    })
+    .join(" ");
+}
+
+// create a function that checks if that a string is less than 100 characters long and returns only the first 100 characters if not
+function headlineLength(str: string) {
+  return str.length > 100 ? str.substring(0, 97) + "..." : str;
+}
+
+
+
 export default function Form() {
   // define variables, any future fields need to be added here
   const [inputs, setInputs] = useState({
@@ -37,8 +60,9 @@ export default function Form() {
     // send data to supabase
     const { data, error } = await supabase.from("posts").insert([
       {
-        jobName: inputs.jobName,
+        jobName: titleCase(inputs.jobName),
         description: inputs.description,
+        headline: headlineLength(inputs.headline),
         category: inputs.category,
         field: inputs.field,
         academicLevel: inputs.academicLevel,
@@ -80,12 +104,13 @@ export default function Form() {
           <br />
           <br />
           <label>
-            Headline <br />
+            Headline <small>(100 characters max)</small> <br />
             <textarea
               className={styles.input}
               name="headline"
               value={inputs.headline || ""}
               onChange={handleChange}
+              maxLength={100}
             />
           </label>
           <br />
@@ -206,7 +231,6 @@ export default function Form() {
           <label>
             Skills <br />
             <input
-              required
               className={styles.input}
               type="text"
               name="skills"
@@ -221,7 +245,6 @@ export default function Form() {
           <label>
             Schedule <br />
             <input
-              required
               className={styles.input}
               type="text"
               name="schedule"
@@ -236,7 +259,6 @@ export default function Form() {
           <label>
             Institution <br />
             <input
-              required
               className={styles.input}
               type="text"
               name="institution"
@@ -251,7 +273,6 @@ export default function Form() {
           <label>
             Department <br />
             <input
-              required
               className={styles.input}
               type="text"
               name="department"
@@ -266,7 +287,6 @@ export default function Form() {
           <label>
             Application Link <br />
             <input
-              required
               className={styles.input}
               type="text"
               name="application_link"
@@ -280,7 +300,6 @@ export default function Form() {
           <label>
             Compensation <br />
             <input
-              required
               className={styles.input}
               type="text"
               name="compensation"

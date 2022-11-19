@@ -27,9 +27,9 @@ export default async function Feed() {
               <div className={styles.card}>
                 <h1 className="card-title">{post.jobName}</h1>
                 <h2>{post.institution}</h2>
-                <h3>{post.isRemote} in {post.location}</h3>
-                {/* Hey Meha, we need to change the line below, it's causing an error when you refresh the feed */}
-                {/* <p className="card-description"> <li>{post.description}</li></p> */}
+                <h3>{post.isRemote} in {post.location}</h3> 
+                <p className="card-description"> {post.description}</p>
+                <p className="card-headline"> {post.headline}</p>
               </div>
             </div>
           ))}
