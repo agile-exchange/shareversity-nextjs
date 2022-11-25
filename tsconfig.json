@@ -20,6 +20,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "utils/supabase-server.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "utils/supabase-server.js", "app/layout.jsx", "app/posts/validate.jsx", "app/posts/page.jsx", "app/posts/form.jsx", "app/head.jsx", "app/page.jsx", "utils/supabase.js", "app/layout.jsx"],
   "exclude": ["node_modules"]
 }

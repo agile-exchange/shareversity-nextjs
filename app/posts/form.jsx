@@ -1,9 +1,8 @@
-import { useState } from "react";
-import supabase from "../../utils/supabase";
+import { useState, useEffect } from "react";
+import supabase from "../../utils/supabase-browser";
 import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
 import { titleCase, headlineLength } from "./validate";
-
 
 export default function Form() {
   // define variables, any future fields need to be added here
@@ -24,8 +23,20 @@ export default function Form() {
     compensation: "",
   });
 
+  const [profile, setProfile] = useState(null);
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+  const fetchProfile = async () => {
+    const user = await supabase.auth.getUser();
+    if (user) {
+      setProfile(user);
+    }
+    console.log(profile);
+  };
+
   // changes the input values to the values in the form
-  const handleChange = (event: any) => {
+  const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
@@ -33,9 +44,9 @@ export default function Form() {
   const router = useRouter();
 
   // submits the form to the database
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
+    fetchProfile();
     // send data to supabase
     const { data, error } = await supabase.from("posts").insert([
       {
@@ -53,9 +64,7 @@ export default function Form() {
         department: inputs.department,
         application_link: inputs.application_link,
         compensation: inputs.compensation,
-        // contact info
-        // change order of fields
-        //
+        created_by: profile ? profile.data.user.email : profile,
       },
     ]);
     console.log({ data, error });

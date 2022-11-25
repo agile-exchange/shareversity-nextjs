@@ -1,6 +1,5 @@
-
 // create a function that capitalizes the first letter of every word in a string except for the words "in" and "of"
-export function titleCase(str: string) {
+export function titleCase(str) {
   return str
     .toLowerCase()
     .split(" ")
@@ -15,6 +14,6 @@ export function titleCase(str: string) {
 }
 
 // create a function that checks if that a string is less than 100 characters long and returns only the first 100 characters if not
-export function headlineLength(str: string) {
+export function headlineLength(str) {
   return str.length > 100 ? str.substring(0, 97) + "..." : str;
 }

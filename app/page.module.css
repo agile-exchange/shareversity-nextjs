@@ -141,11 +141,20 @@
   border-bottom: 1px solid #eaeaea;
 }
 
-.login {
+.profile {
   margin-left: auto;
   flex-wrap: wrap;
   margin-right: 3rem;
-  font-size: 1.3rem;
+   font-size: 1.3rem;
+  font-weight: 200;
+}
+
+.loginSignup{
+ margin-left: auto;
+  flex-wrap: wrap;
+  margin-right: 3rem;
+   font-size: 1.3rem;
+  font-weight: 200;
 }
 
 .login:hover {
