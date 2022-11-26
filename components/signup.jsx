@@ -24,13 +24,18 @@ export default function SignupUI() {
       setSubmitted(true);
     }
 
-    if (submitted) {
-      return <h1>Check your email, for verification link.</h1>;
-    }
   };
-
+if (submitted) {
   return (
     <>
+      <h1>Successfully signed up!</h1>
+      <p>Check your email for the confirmation link.</p>
+      </>)
+  
+}
+  return (
+    <>
+       <h1>Signup</h1>     
       <input
         type="email"
         placeholder="Email"
@@ -41,7 +46,7 @@ export default function SignupUI() {
         type="password"
         placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
-      />
+      /> <small>at least 6 characters</small>
       <br />
       <button onClick={handleSignup}>Signup</button>
     </>

@@ -1,9 +1,10 @@
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 import Link from "next/link";
 import "./globals.css";
 import styles from "./page.module.css";
 import SupabaseListener from "../components/supabase-listener";
 import createClient from "../utils/supabase-server";
-export const revalidate = 0;
 import "server-only";
 
 export default async function RootLayout({ children }) {
@@ -47,11 +48,6 @@ export default async function RootLayout({ children }) {
         </div>
         <SupabaseListener accessToken={session?.access_token} />
         {children}
-
-        {/* <SessionContextProvider supabaseClient={supabaseClient}> */}
-        {/* <Component {...pageProps} /> */}
-        {/* initialSession={pageProps.intitalsession} */}
-        {/* </SessionContextProvider> */}
       </body>
     </html>
   );

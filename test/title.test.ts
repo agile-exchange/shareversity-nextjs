@@ -1,4 +1,4 @@
-import { titleCase, headlineLength } from "../app/posts/validate";
+import { titleCase, headlineLength } from "../utils/validate";
 
 describe("validate job title", () => {
   it("should have return title case", () => {

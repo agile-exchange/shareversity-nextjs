@@ -10,6 +10,9 @@ export default function LogoutUI() {
     if (error) {
       console.log({ error });
     }
+    else{
+      return <h1>Successfully logged out!</h1>;
+    }
   };
   return (
     <>

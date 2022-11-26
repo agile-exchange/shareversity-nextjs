@@ -1,4 +1,6 @@
 "use client";
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 import styles from "../page.module.css";
 import Form from "./form";
 import supabase from "../../utils/supabase-browser";
@@ -13,7 +15,8 @@ export default function posts() {
   }, []);
 
   const fetchProfile = async () => {
-    supabase.auth.refreshSession();
+    const {
+      data: { user, session }} = await supabase.auth.refreshSession();
     const { data, error } = await supabase.auth.getUser();
     console.log("the user", data.user);
     // console.log('the error');
@@ -30,7 +33,7 @@ export default function posts() {
 
     return (
       <>
-        <Suspense>
+        <Suspense fallback={<p>Loading form...</p>}>
           <main className={styles.main}>
             <p>Not logged in</p>
             <p>Please login to post</p>
