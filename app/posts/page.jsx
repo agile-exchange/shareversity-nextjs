@@ -7,8 +7,10 @@ import supabase from "../../utils/supabase-browser";
 import { useState, useEffect } from "react";
 import { Suspense } from "react";
 
+
 export default function posts() {
   const [profile, setProfile] = useState(null);
+
 
   useEffect(() => {
     fetchProfile();
@@ -18,12 +20,10 @@ export default function posts() {
     const {
       data: { user, session }} = await supabase.auth.refreshSession();
     const { data, error } = await supabase.auth.getUser();
-    console.log("the user", data.user);
     // console.log('the error');
 
     if (data.user) {
       setProfile(data);
-      console.log("nothing happened");
     }
   };
 
