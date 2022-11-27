@@ -1,3 +1,4 @@
+import { assert, describe, expect, it } from "vitest";
 import { titleCase, headlineLength } from "../utils/validate";
 
 describe("validate job title", () => {
@@ -16,3 +17,9 @@ describe("validate headline input", () => {
     expect(return100a()).toBe(headlineLength(return100a()));
   });
 });
+
+// describe("add 2+2", () => {
+//   it("should return 4", () => {
+//     expect(2 + 2).toBe(4);
+//   });
+// });
