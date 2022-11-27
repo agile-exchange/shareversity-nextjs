@@ -4,7 +4,6 @@ export const revalidate = 0; // revalidates on every request
 import { Link } from "next/link";
 // import "server-only";
 import { Suspense } from "react";
-import
 
 // Fetches data on each request
 async function getData() {
