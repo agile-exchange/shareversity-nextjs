@@ -1,9 +1,4 @@
-import styles from "../page.module.css";
-import supabase from "../../utils/supabase";
-export const revalidate = 0; // revalidates on every request
-import { Link } from "next/link";
-// import "server-only";
-import { Suspense } from "react";
+
 
 // Fetches data on each request
 async function getData() {
