@@ -11,6 +11,7 @@ export default function Home() {
 
         <p className={styles.description}>"Seamlessly Connecting Students with Opportunities"</p>
         <p className={styles.description}>Search Now!</p>
+        {/* <p className={styles.description}>Search Now!</p> */}
       </main>
     </div>
   );
