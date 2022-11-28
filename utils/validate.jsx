@@ -17,7 +17,7 @@ export function titleCase(str) {
 
 // create a function that checks if that a string is less than 100 characters long and returns only the first 100 characters if not
 export function headlineLength(str) {
-  return str.length > 100 ? str.substring(0, 97) + "..." : str;
+  return str.length > 100 ? str.substring(0, 100) + "..." : str;
 }
 
 export function validateStringNotEmpty(str) {
@@ -59,10 +59,7 @@ export function validateFormData(input) {
     return val;
   }
   return "true";
-  // validateEmail(input.email);
 }
-
-
 
 export function validateEduEmailAccount(email){
   if(!email.includes("edu")){
@@ -98,3 +95,26 @@ export function verifyPassword(password) {
 
   return "Password is correct";  
 } 
+
+export function validateSchedule(comp){
+  let matchPattern =comp.match(/\d+/g);
+  if(!matchPattern){
+    return "Invalid Schedule, must contain number";
+  }
+
+  return "Valid Schedule entered";
+}
+
+export function validateLoginEmail(email) {
+  if(email.trim().length === 0) {
+      return "Email cant be empty"; 
+  }  
+  return "true";
+}
+
+export function validateLoginPassword(password) {
+  if(password.trim().length === 0) {
+    return "Password cant be empty"; 
+  }  
+  return "true";
+}

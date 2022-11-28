@@ -1,16 +1,18 @@
 import { assert, describe, expect, it } from "vitest";
 import { titleCase, headlineLength, validateStringNotEmpty, validateApplicationLink, validateCompensation, 
-  validateFormData, validateEmail, validateEduEmailAccount, verifyPassword} from "../utils/validate";
+  validateFormData, validateSchedule} from "../utils/validate";
 
 describe("validate job title", () => {
-  it("should have return title case", () => {
+  it("should convert to camel case, when text is entered", () => {
     expect("Data Analyst").toBe(titleCase("data analyst"));
   });
 });
 
 describe("validate headline input", () => {
-  it("should return 100 characters only", () => {
-    expect(return100a()).toBe(headlineLength(return100a()));
+  it("should return 100 characters only, when more than 100 characters are entered", () => {
+    const longString = return100a() + return100a();
+    const input = headlineLength(longString)
+    expect(return100a()).toBe(input);
   });
 });
 
@@ -105,7 +107,27 @@ describe("validateFormData when user submits the form", () => {
   });
 });
 
+describe("Validate Schedule ", () => {
+  it("should return an error message, if schedule is an empty string", () => {
+    const input = "";
+    var result = validateStringNotEmpty(input);
+    expect(result).toBe("Invalid input - must not be empty");
+  });
+
+  it("should return an error message, if schedule doesn't contain number", () => {
+    const input = "hours";
+    var result = validateSchedule(input);
+    expect(result).toBe("Invalid Schedule, must contain number");
+  });
+
+  it("should return a success message, if the entered schedule is valid", () => {
+    const input = "8 hours per day";
+    var result = validateSchedule(input);
+    expect(result).toBe("Valid Schedule entered");
+  });
+});
+
 // write a function that returns the letter "a" 100 times
 function return100a() {
-  return "a".repeat(100);
+  return "a".repeat(100) + "...";
 }

@@ -1,5 +1,5 @@
 import { assert, describe, expect, it } from "vitest";
-import { validateEmail, validateEduEmailAccount, verifyPassword} from "../utils/validate";
+import { validateEmail, validateEduEmailAccount, verifyPassword, validateLoginEmail, validateLoginPassword} from "../utils/validate";
 
   describe("validate the students email", () => {
 
@@ -59,3 +59,43 @@ import { validateEmail, validateEduEmailAccount, verifyPassword} from "../utils/
       expect(result).toBe("Password is correct");
     });
   });
+
+  describe("validate login email", () => {
+    it('should return an error message, if email is empty', () => {
+      const input = '';
+      var result = validateLoginEmail(input);
+      expect(result).toBe("Email cant be empty");
+    });
+
+    it('should return an error message, if a long string of blanks is provided', () => {
+        const input = '     ';
+        var result = validateLoginEmail(input);
+        expect(result).toBe("Email cant be empty");
+      });
+
+    it('should return an error message, if a long string of blanks is provided', () => {
+        const input = 'test@edu.com';
+        var result = validateLoginEmail(input);
+        expect(result).toBe("true");
+    });
+  });
+
+  describe("validate login password", () => {
+    it('should return an error message, if password is empty', () => {
+      const input = '';
+      var result = validateLoginPassword(input);
+      expect(result).toBe("Password cant be empty");
+    });
+
+    it('should return an error message, if password is empty', () => {
+        const input = '    ';
+        var result = validateLoginPassword(input);
+        expect(result).toBe("Password cant be empty");
+    });
+
+    it('should return true, if password is valid', () => {
+        const input = 'validPassword';
+        var result = validateLoginPassword(input);
+        expect(result).toBe("true");
+    });
+});
