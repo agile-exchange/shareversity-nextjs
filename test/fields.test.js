@@ -27,6 +27,6 @@ describe("validate headline input", () => {
 
 describe("add 2+2", () => {
   it("should return 4", () => {
-    expect(2 + 2).toBe(5);
+    expect(2 + 2).toBe(4);
   });
 });
