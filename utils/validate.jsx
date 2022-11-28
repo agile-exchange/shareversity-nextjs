@@ -17,3 +17,9 @@ export function titleCase(str) {
 export function headlineLength(str) {
   return str.length > 100 ? str.substring(0, 97) + "..." : str;
 }
+
+export function validateStringNotEmpty(str) {
+  if (str.trim().length === 0) {
+    throw new Error('Invalid input - must not be empty');
+  }
+}

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import supabase from "../../utils/supabase-browser";
 import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
-import { titleCase, headlineLength } from "../../utils/validate";
+import { titleCase, headlineLength, jobCategoryLength } from "../../utils/validate";
 
 export default function Form() {
   // define variables, any future fields need to be added here
@@ -43,9 +43,21 @@ export default function Form() {
   };
   const router = useRouter();
 
+  const validateFormData =  (input) => {
+    validateStringNotEmpty(inputs.category);
+  }
+
   // submits the form to the database
   const handleSubmit = async (event) => {
+
     event.preventDefault();
+    let result = '';
+    try{
+      validateFormData(inputs);
+    }catch (error) {
+      result = error.message;
+      return;
+    }
     fetchProfile();
     // send data to supabase
     const { data, error } = await supabase.from("posts").insert([
@@ -53,7 +65,7 @@ export default function Form() {
         jobName: titleCase(inputs.jobName),
         description: inputs.description,
         headline: headlineLength(inputs.headline),
-        category: inputs.category,
+        category: validateStringNotEmpty(inputs.category),
         field: inputs.field,
         academicLevel: inputs.academicLevel,
         isRemote: inputs.isRemote,
@@ -82,7 +94,7 @@ export default function Form() {
           <br />
           <h1>Job details</h1>
           <label>
-            Job Name <br />
+            Job Title <br />
             <input
               required
               className={styles.input}
@@ -122,6 +134,7 @@ export default function Form() {
           <label>
             Job Category <br />
             <select
+              required
               className={styles.input}
               name="category"
               value={inputs.category || ""}
