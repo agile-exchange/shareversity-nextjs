@@ -102,7 +102,7 @@ h2 {
   border-radius: 130px;
 } 
 
-input{
+.login{
     width: 300px;
     height: 50px;
     border-radius: 60px;
@@ -127,7 +127,110 @@ input{
     padding-top: 20px;
 }
 
-button{
+.login-form, .signup-form{
+    padding-top: 20px;
+    color:rgb(1,105,228);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0px 0px 6px 0px rgb(197, 195, 195);
+    background-color: #fff;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+.login-form input,.signup-form input{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 20px;
+    font-weight: 300;
+    color: rgb(1,105,228);
+
+}
+.login-form input:focus,.signup-form input:focus{
+    border: 1px solid rgb(1,105,228);
+}
+
+.login-form h1,.signup-form h1{
+    font-size: 30px;
+    font-weight: 300;
+    color: rgb(1,105,228);
+    padding-bottom: 20px;
+
+}
+
+.login-form button,.signup-form button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: rgb(1,105,228);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 300;
+    margin-top: 20px;
+
+}
+.login-form button:hover{
+    background-color: blue;
+    color: #fff;
+    border: .5px solid rgb(1,105,228) ;
+    transition: .5s;
+
+
+}
+
+.profile{
+  padding-top: 20px;
+    color:rgb(1,105,228);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 30px;
+    box-shadow: 0px 0px 6px 0px rgb(197, 195, 195);
+    background-color: #fff;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   
+}
+.profile button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: rgb(1,105,228);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 300;
+    margin-top: 20px;
+
+}
+
+.profile button:hover{
+    background-color: blue;
+    color: #fff;
+    border: .5px solid rgb(1,105,228) ;
+    transition: .5s;}
+
+
+
+.button{
     width: 380px;
     height: 50px;
     border-radius: 60px;

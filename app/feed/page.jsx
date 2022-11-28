@@ -37,8 +37,7 @@ export default async function Feed() {
                     <p className="card-description"> {post.description}</p>
                     <p className="card-headline"> {post.headline}</p>
                     <p className="card-headline">
-                      {" "}
-                      Created by: {post.created_by}
+                      {post.created_by ? "Created by: " + post.created_by : ""}
                     </p>
                   </div>
                 </a>

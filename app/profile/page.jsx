@@ -32,9 +32,10 @@ export default function Profile() {
 
   return (
     <>
-      <h1>Profile</h1>
-      <p>Email: {profile.data.user.email}</p>
-      <button onClick={handleLogout}>Logout</button>
+      <div className="profile">
+        <p>Email: {profile.data.user.email}</p>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
     </>
   );
 }
