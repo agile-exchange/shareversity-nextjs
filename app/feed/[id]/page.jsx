@@ -3,7 +3,6 @@
 import styles from "../../page.module.css";
 import supabase from "../../../utils/supabase";
 import { Suspense } from "react";
-import {Link} from "next/link";
 // const router = useRouter();
 // const { id } = router.query;
 
