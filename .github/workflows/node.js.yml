@@ -25,9 +25,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
+        cache: 'npm' 
     - run: npm ci
-    - run: npm test
+    - name: Execute unit tests
+      run: npm test
     
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
