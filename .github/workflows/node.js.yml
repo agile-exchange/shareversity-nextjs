@@ -29,3 +29,8 @@ jobs:
     - run: npm ci
   # - run: npm run build
     - run: npm test
+    
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
