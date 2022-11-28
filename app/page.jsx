@@ -9,7 +9,8 @@ export default function Home() {
           Welcome to <a href="/">Shareversity</a>
         </h1>
 
-        <p className={styles.description}>let's get started!</p>
+        <p className={styles.description}>"Seamlessly Connecting Students with Opportunities"</p>
+        <p className={styles.description}>Search Now!</p>
       </main>
     </div>
   );
