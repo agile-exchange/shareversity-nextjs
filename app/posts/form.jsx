@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import supabase from "../../utils/supabase-browser";
 import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
-import { titleCase, headlineLength, validateFormData } from "../../utils/validate";
+import { titleCase, headlineLength, validateFormData, validateEmail } from "../../utils/validate";
 
 export default function Form() {
   // define variables, any future fields need to be added here
