@@ -20,6 +20,7 @@ export function headlineLength(str) {
 
 export function validateStringNotEmpty(str) {
   if (str.trim().length === 0) {
+    console.log("here");
     throw new Error('Invalid input - must not be empty');
   }
 }
@@ -38,4 +39,14 @@ export function validateCompensation(comp){
   if(!(result || comp.includes("$") || comp.includes(","))){
     throw new Error('Invalid number input.');
   }
+}
+
+export function validateFormData(input) {
+  // validate job name
+  validateStringNotEmpty(input.jobName);
+
+  // validate Job Description
+  validateStringNotEmpty(input.description);
+
+  validateStringNotEmpty(input.category);
 }

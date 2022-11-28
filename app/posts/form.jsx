@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import supabase from "../../utils/supabase-browser";
 import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
-import { titleCase, headlineLength, jobCategoryLength } from "../../utils/validate";
+import { titleCase, headlineLength, validateFormData } from "../../utils/validate";
 
 export default function Form() {
   // define variables, any future fields need to be added here
@@ -22,6 +22,8 @@ export default function Form() {
     application_link: "",
     compensation: "",
   });
+
+  const [incorrectJDEntered, setIncorrectJDEntered] = useState(false);
 
   const [profile, setProfile] = useState(null);
   useEffect(() => {
@@ -43,13 +45,12 @@ export default function Form() {
   };
   const router = useRouter();
 
-  const validateFormData =  (input) => {
-    validateStringNotEmpty(inputs.category);
-  }
-
   // submits the form to the database
   const handleSubmit = async (event) => {
 
+    if(inputs.description.length === 0) {
+      setIncorrectJDEntered(true);
+    }
     event.preventDefault();
     let result = '';
     try{
@@ -121,6 +122,7 @@ export default function Form() {
 
           <label>
             Job Description <br />
+            { incorrectJDEntered && <label className="incorrectjd">Job Description cannot be empty <br /></label> }
             <textarea
               className={styles.input}
               name="description"

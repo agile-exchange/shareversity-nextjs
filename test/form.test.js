@@ -1,5 +1,5 @@
 import { assert, describe, expect, it } from "vitest";
-import { titleCase, headlineLength, validateStringNotEmpty, validateApplicationLink, validateCompensation} from "../utils/validate";
+import { titleCase, headlineLength, validateStringNotEmpty, validateApplicationLink, validateCompensation, validateFormData} from "../utils/validate";
 
 describe("validate job title", () => {
   it("should have return title case", () => {
@@ -84,6 +84,36 @@ describe("Validate Compensation", () => {
     const input = "$90,000-$100,00";
     const validationFn = () => validateCompensation(input);
     expect(validationFn).not.toThrow();
+  });
+});
+
+
+describe("validateFormData when user submits the form", () => {
+  it('should throw when job title is empty', () => {
+    const inputObject = {
+      "jobName": ""
+    };
+    const validationFn = () => validateFormData(inputObject);
+    expect(validationFn).toThrow();
+  });
+
+  it('should throw when job description is empty', () => {
+    const inputObject = {
+      "jobName": "Valid Job Name",
+      "description": ''
+    };
+    const validationFn = () => validateFormData(inputObject);
+    expect(validationFn).toThrow();
+  });
+
+  it('should throw when job category is not selected', () => {
+    const inputObject = {
+      "jobName": "Valid Job Name",
+      "description": 'skjdafnkjs',
+      "category": ''
+    };
+    const validationFn = () => validateFormData(inputObject);
+    expect(validationFn).toThrow();
   });
 });
 
