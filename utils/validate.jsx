@@ -1,3 +1,5 @@
+import { TypePredicateKind } from "typescript";
+
 // create a function that capitalizes the first letter of every word in a string except for the words "in" and "of"
 export function titleCase(str) {
   return str
@@ -38,8 +40,9 @@ export function validateCompensation(comp){
   const result = numPattern.test(comp);
 
   if(!(result || comp.includes("$") || comp.includes(","))){
-    throw new Error('Invalid number input.');
+    return "Invalid number input";
   }
+  return "true";
 }
 
 export function validateFormData(input) {

@@ -2,25 +2,26 @@ import { assert, describe, expect, it } from "vitest";
 import { validateEmail, validateEduEmailAccount, verifyPassword} from "../utils/validate";
 
   describe("validate the students email", () => {
+
+    it('should return false, if email is empty', () => {
+      const input = '';
+      var result = validateEmail(input);
+      expect(result).toBe(false);
+    });
+
     it('should return false, if email is not valid', () => {
       const input = 'test@test@gmail.com';
       var result = validateEmail(input);
       expect(result).toBe(false);
     });
   
-    it('should return false, if email is empty', () => {
-      const input = '';
-      var result = validateEmail(input);
-      expect(result).toBe(false);
-    });
-  
-    it('should return error false, if email doesnt contain @', () => {
+    it('should return false, if email doesnt contain @', () => {
       const input = 'testgmail.com.edu';
       var result = validateEmail(input);
       expect(result).toBe(false);
     });
   
-    it('should return error false, if email doesnt contain edu', () => {
+    it('should return false, if email is not an edu email', () => {
       const input = 'test@gmail.com';
       var result = validateEduEmailAccount(input);
       expect(result).toBe(false);
@@ -34,7 +35,7 @@ import { validateEmail, validateEduEmailAccount, verifyPassword} from "../utils/
   });
   
   describe("validate password", () => {
-    it('should return error, if password is empty', () => {
+    it('should return error message, if password is empty', () => {
       const input = '';
       var result = verifyPassword(input);
       expect(result).toBe("Password cant be empty");
@@ -52,7 +53,7 @@ import { validateEmail, validateEduEmailAccount, verifyPassword} from "../utils/
       expect(result).toBe("Password length must not exceed 15 characters");
     });
   
-    it('should return true, if passwor1d is meets the rubric', () => {
+    it('should return true, if passwor1d is meets the requirements', () => {
       const input = 'password123';
       var result = verifyPassword(input);
       expect(result).toBe("Password is correct");
