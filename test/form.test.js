@@ -1,5 +1,5 @@
 import { assert, describe, expect, it } from "vitest";
-import { titleCase, headlineLength, validateStringNotEmpty} from "../utils/validate";
+import { titleCase, headlineLength, validateStringNotEmpty, validateApplicationLink, validateCompensation} from "../utils/validate";
 
 describe("validate job title", () => {
   it("should have return title case", () => {
@@ -53,13 +53,41 @@ describe("validateStringNotEmpty", () => {
   });
 });
 
+describe("Validate Application Link", () => {
+  it('should not throw an error, if a valid link is not provided', () => {
+    const input = 'InvalidLink';
+    const validationFn = () => validateApplicationLink(input);
+    expect(validationFn).toThrow();
+  });
+
+  it('should not throw an error, if a valid http link is provided', () => {
+    const input = 'https://validlink.com';
+    const validationFn = () => validateApplicationLink(input);
+    expect(validationFn).not.toThrow();
+  });
+});
+
+describe("Validate Compensation", () => {
+  it('should throw an error, if compensation doesnt contain numbers', () => {
+    const input = 'invalidCompensation';
+    const validationFn = () => validateCompensation(input);
+    expect(validationFn).toThrow();
+  });
+
+  it('should not throw an error, if a number is provided', () => {
+    const input = "$100";
+    const validationFn = () => validateCompensation(input);
+    expect(validationFn).not.toThrow();
+  });
+
+  it('should not throw an error, if a valid salary range is provided', () => {
+    const input = "$90,000-$100,00";
+    const validationFn = () => validateCompensation(input);
+    expect(validationFn).not.toThrow();
+  });
+});
+
 // write a function that returns the letter "a" 100 times
 function return100a() {
   return "a".repeat(100);
 }
-
-// describe("add 2+2", () => {
-//   it("should return 4", () => {
-//     expect(2 + 2).toBe(4);
-//   });
-// });

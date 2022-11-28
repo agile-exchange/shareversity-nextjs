@@ -23,3 +23,19 @@ export function validateStringNotEmpty(str) {
     throw new Error('Invalid input - must not be empty');
   }
 }
+
+export function validateApplicationLink(link){
+  if(!link.startsWith("http")){
+    throw new Error('Invalid input - must not be empty');
+  }
+}
+
+export function validateCompensation(comp){
+  var numPattern = /^[0-9\-]+$/;
+
+  const result = numPattern.test(comp);
+
+  if(!(result || comp.includes("$") || comp.includes(","))){
+    throw new Error('Invalid number input.');
+  }
+}
