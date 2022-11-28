@@ -27,10 +27,12 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    #- run: npm run build
+    - name: Run unit tests
     - run: npm test
     
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    - name: Deploy to Digitalocean
+      run: doctl apps create-deployment 3de415f7-fa52-4e2c-a414-a025c1422c4e
