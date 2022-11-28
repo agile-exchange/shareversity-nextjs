@@ -21,31 +21,11 @@ describe("validateStringNotEmpty", () => {
     expect(result).toBe("Invalid input - must not be empty");
   });
 
-  // it('should throw an error with a message that contains a reason (must not be empty)', () => {
-  //   const input = '';
-  //   const validationFn = () => validateStringNotEmpty(input);
-  //   expect(validationFn).toThrow(/must not be empty/);
-  // });
-
   it('should throw an error if a long string of blanks is provided', () => {
     const input = '';
     var result = validateStringNotEmpty(input);
     expect(result).toBe("Invalid input - must not be empty");
   });
-
-  // it('should throw an error if any other value than a string is provided', () => {
-  //   const inputNum = 1;
-  //   const inputBool = 1;
-  //   const inputObj = {};
-
-  //   var validationFnNum =  validateStringNotEmpty(inputNum);
-  //   var validationFnBool = validateStringNotEmpty(inputBool);
-  //   var validationFnObj = validateStringNotEmpty(inputObj);
-
-  //   expect(validationFnNum).toBe("Invalid input - must not be empty");
-  //   expect(validationFnBool).toBe("Invalid input - must not be empty");
-  //   expect(validationFnObj).toBe("Invalid input - must not be empty");
-  // });
 
   it('should not throw an error, if a non-empty string is provided', () => {
     const input = 'valid';
@@ -116,64 +96,6 @@ describe("validateFormData when user submits the form", () => {
     };
     var result = validateFormData(inputObject);
     expect(result).toBe("Invalid input - must not be empty"); 
-  });
-});
-
-describe("validate the students email", () => {
-  it('should return false, if email is not valid', () => {
-    const input = 'test@test@gmail.com';
-    var result = validateEmail(input);
-    expect(result).toBe(false);
-  });
-
-  it('should return false, if email is empty', () => {
-    const input = '';
-    var result = validateEmail(input);
-    expect(result).toBe(false);
-  });
-
-  it('should return error false, if email doesnt contain @', () => {
-    const input = 'testgmail.com.edu';
-    var result = validateEmail(input);
-    expect(result).toBe(false);
-  });
-
-  it('should return error false, if email doesnt contain edu', () => {
-    const input = 'test@gmail.com';
-    var result = validateEduEmailAccount(input);
-    expect(result).toBe(false);
-  });
-
-  it('should return true, if email is valid', () => {
-    const input = 'test@gmail.edu';
-    var result = validateEmail(input);
-    expect(result).toBe(true);
-  });
-});
-
-describe("validate password", () => {
-  it('should return error, if password is empty', () => {
-    const input = '';
-    var result = verifyPassword(input);
-    expect(result).toBe("Password cant be empty");
-  });
-
-  it('should return error, if password is length is less than 8', () => {
-    const input = 'passw';
-    var result = verifyPassword(input);
-    expect(result).toBe("Password length must be atleast 8 characters");
-  });
-
-  it('should return error, if password is length is more than 15', () => {
-    const input = 'passwordpasswordpassword';
-    var result = verifyPassword(input);
-    expect(result).toBe("Password length must not exceed 15 characters");
-  });
-
-  it('should return true, if password is meets the rubric', () => {
-    const input = 'password123';
-    var result = verifyPassword(input);
-    expect(result).toBe("Password is correct");
   });
 });
 

@@ -50,6 +50,7 @@ export default function Form() {
 
     if(inputs.description.length === 0) {
       setIncorrectJDEntered(true);
+      return;
     }
     event.preventDefault();
     let result = '';
