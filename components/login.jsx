@@ -29,7 +29,7 @@ export default function LoginUI() {
 
   if (submitted) {
     // router.refresh();
-    console.log("we should return the new page");
+    // console.log("we should return the new page");
     router.push("/posts");
   }
   return (
