@@ -1,17 +1,16 @@
-import styles from "../page.module.css";
+// import styles from "../page.module.css";
 
 export default function Search (){
    return (<>
-
+<div className="profile_search">
    <label>
-            Search Profiles <br />
+            <h1>Search Profiles</h1><br />
             <input
-              className={styles.input}
               type="text"
               name="profile-search"
             />
           </label>
-   
+          </div>
    
    </>) 
 }

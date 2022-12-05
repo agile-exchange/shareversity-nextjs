@@ -30,6 +30,10 @@ export default async function RootLayout({ children }) {
             Job Opportunities
           </Link>
 
+          <Link className={styles.navitem} href="/profile-search">
+            Search Profiles
+          </Link>
+
           {session ? (
             <Link className={styles.profile} href="/profile">
               Profile

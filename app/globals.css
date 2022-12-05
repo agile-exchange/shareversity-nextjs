@@ -190,6 +190,7 @@ h2 {
 
 }
 
+
 .profile{
   padding-top: 20px;
     color:rgb(1,105,228);
@@ -251,3 +252,36 @@ h2 {
 .incorrectemail {
   color: red;
 } 
+
+.profile_search {
+  padding-top: 20px;
+  color:rgb(1,105,228);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 30px;
+  /* box-shadow: 0px 0px 6px 0px rgb(197, 195, 195); */
+  background-color: #fff;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profile_search input {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 20px;
+  font-weight: 300;
+  color: rgb(1,105,228);
+}
+
+.profile_search h1 {
+  text-align: center;
+}
