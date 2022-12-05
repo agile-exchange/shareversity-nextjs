@@ -55,6 +55,7 @@ export default function Search (){
     }
   };
    return (<>
+ProfileUpdate
       <SearchInput searchItems={searchItems} setNameSearchInput={setNameSearchInput} />
       <SearchTag searchTags={searchTags} setTagSearchInput={setTagSearchInput} />
       <div className="main">
@@ -79,4 +80,3 @@ export default function Search (){
         </div>
       </div>
     </>) ;
-}
