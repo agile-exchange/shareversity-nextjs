@@ -79,4 +79,4 @@ ProfileUpdate
               ))}
         </div>
       </div>
-    </>) ;
+    </>) };
