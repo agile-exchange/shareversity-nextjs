@@ -1,12 +1,10 @@
 "use client"
-import { SupabaseAuthClient } from '@supabase/supabase-js/dist/module/lib/SupabaseAuthClient';
 import { getData } from '../../Modules/module';
 import { useState, useEffect } from 'react';
 import '../../App.css';
 import StudentCard from '../../components/StudentCard';
 import SearchInput from '../../components/SearchInput';
 import SearchTag from '../../components/SearchTag';
-import LoginUI from '../../components/login';
 
 
 export default function Search (){
