@@ -2,6 +2,7 @@ import { TypePredicateKind } from "typescript";
 
 // create a function that capitalizes the first letter of every word in a string except for the words "in" and "of"
 export function titleCase(str) {
+  
   return str
     .toLowerCase()
     .split(" ")
