@@ -14,6 +14,9 @@ export default function Form() {
     description: "",
     headline: "",
     category: "",
+    workPlaceType: "",
+    jobType: "",
+    duration: "",
     field: "",
     academicLevel: "",
     isRemote: "",
@@ -22,6 +25,7 @@ export default function Form() {
     schedule: "",
     institution: "",
     department: "",
+    compensationType: "",
     compensation: "",
     application_link: "",
     applicationDeadline: "",
@@ -82,6 +86,9 @@ export default function Form() {
         description: inputs.description,
         headline: headlineLength(inputs.headline),
         category: inputs.category,
+        workPlaceType: inputs.workPlaceType,
+        jobType: inputs.jobType,
+        duration: inputs.duration,
         field: inputs.field,
         academicLevel: inputs.academicLevel,
         isRemote: inputs.isRemote,
@@ -90,6 +97,7 @@ export default function Form() {
         schedule: inputs.schedule,
         institution: inputs.institution,
         department: inputs.department,
+        compensationType: inputs.compensationType,
         compensation: inputs.compensation,
         created_by: profile ? profile.data.user.email : profile,
         application_link: inputs.application_link,
@@ -174,30 +182,62 @@ export default function Form() {
               <option value="Voluntary">Voluntary</option>
             </select>
           </label>
-
           <br />
           </div>
           <br />
           <h1>Other details</h1>
           <div className={styles.subform}>
-
+          <label>
+            Workplace Type <br />
+            <select
+              required
+              className={styles.input}
+              name="workPlaceType"
+              value={inputs.workPlaceType || ""}
+              onChange={handleChange}
+            >
+              <option value="">Select Category</option>
+              <option value="On-Site">On-Site</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Remote">Remote</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <br />
+          <br />
           <label>
             Job Type <br />
             <select
+              required
               className={styles.input}
-              name="isRemote"
-              value={inputs.category || ""}
+              name="jobType"
+              value={inputs.jobType || ""}
               onChange={handleChange}
             >
-              <option value="">Select Type</option>
-              <option value="Remote">Remote</option>
-              <option value="On Site">On Site</option>
+              <option value="">Select Category</option>
+              <option value="Internship">Internship</option>
+              <option value="Full Time">Full Time</option>
+              <option value="Part Time">Part Time</option>
+              <option value="Contract">Contract</option>
+              <option value="Temporary">Temporary</option>
+              <option value="Volunteer">Volunteer</option>
+              <option value="Other">Other</option>
             </select>
           </label>
-
           <br />
           <br />
-
+          <label>
+            Duration <br />
+            <input
+              className={styles.input}
+              type="text"
+              name="duration"
+              value={inputs.duration || ""}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <br />
           <label>
             Field <br />
             <select
@@ -243,7 +283,30 @@ export default function Form() {
               <option value="Any">Any</option>
             </select>
           </label>
-
+          <br />
+          <br />
+          <label>
+            Institution <br />
+            <input
+              className={styles.input}
+              type="text"
+              name="institution"
+              value={inputs.institution || ""}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <br />
+          <label>
+            Department <br />
+            <input
+              className={styles.input}
+              type="text"
+              name="department"
+              value={inputs.department || ""}
+              onChange={handleChange}
+            />
+          </label>
           <br />
           <br />
 
@@ -285,38 +348,27 @@ export default function Form() {
               onChange={handleChange}
             />
           </label>
-
           <br />
           <br />
-
           <label>
-            Institution <br />
-            <input
+          Compensation Type <br />
+            <select
+              required
               className={styles.input}
-              type="text"
-              name="institution"
-              value={inputs.institution || ""}
+              name="compensationType"
+              value={inputs.compensationType || ""}
               onChange={handleChange}
-            />
+            >
+              <option value="">Select Category</option>
+              <option value="Paid">Paid</option>
+              <option value="UnPaid">UnPaid</option>
+              <option value="Class Credit">Class Credit</option>
+              <option value="Voluntary">Voluntary</option>
+              <option value="Other">Other</option>
+            </select>
           </label>
-
           <br />
           <br />
-
-          <label>
-            Department <br />
-            <input
-              className={styles.input}
-              type="text"
-              name="department"
-              value={inputs.department || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <br />
-          <br />
-
           <label>
             Compensation <br />
             <input
