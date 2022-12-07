@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import supabase from "../../utils/supabase-browser";
 import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
+import Select from 'react-select'
 import { Editor } from "react-draft-wysiwyg";
-
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { titleCase, headlineLength, validateFormData, validateEmail } from "../../utils/validate";
 
@@ -32,6 +32,25 @@ export default function Form() {
     applicationProcess: "",
     primaryContact: "",
   });
+
+  const jobSkills = [
+    { value: 'Java', label: 'java' },
+    { value: 'React', label: 'react' },
+    { value: 'js', label: 'js' },
+    { value: 'C++', label: 'C++' },
+    { value: 'NodeJs', label: 'CNodeJs' }
+  ]
+
+  const [skillsFinal, setSkillsFinal] = useState('');
+  const handleChangeSkills = (e) => {
+    var value = [];
+    for (var i = 0, l = e.length; i < l; i++) {
+        value.push(e[i].value);
+    }
+
+    const str = value.join(',');
+    setSkillsFinal(str);
+  };
 
   const [incorrectJDEntered, setIncorrectJDEntered] = useState(false);
 
@@ -93,7 +112,7 @@ export default function Form() {
         academicLevel: inputs.academicLevel,
         isRemote: inputs.isRemote,
         location: inputs.location,
-        skills: inputs.skills,
+        skills: skillsFinal,
         schedule: inputs.schedule,
         institution: inputs.institution,
         department: inputs.department,
@@ -320,10 +339,21 @@ export default function Form() {
               onChange={handleChange}
             />
           </label>
-
           <br />
           <br />
-
+          <label>
+            Skills Select <br />
+            <Select
+                isMulti
+                name="skills"
+                options={jobSkills}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                onChange={handleChangeSkills}
+            />
+          </label>
+          <br />
+          {/* <br />
           <label>
             Skills <br />
             <input
@@ -335,7 +365,7 @@ export default function Form() {
             />
           </label>
 
-          <br />
+          <br /> */}
           <br />
 
           <label>
