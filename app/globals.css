@@ -44,7 +44,7 @@ body {
   display: inline-block;
   position: relative;
   transition: 0.5s;
-}
+} 
 
 #reg_btn span:after {
   content: '\00bb';
@@ -53,6 +53,33 @@ body {
   top: 0;
   right: -20px;
   transition: 0.5s;
+}
+
+.sidebar {
+  margin-left: 0px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  border-radius: 5px;
+  /* background-color: #171717; */
+  color: #fff;
+  padding: 15px;
+}
+
+.filter-wrapper{
+  display: flex;
+  margin: 10px;
+}
+
+.filterBox {
+  /* float: left; */
+  margin-left: 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  width: 170px;
+  height: 15%;
+  flex: 1;
 }
 
 #reg_btn:hover span {
@@ -229,17 +256,42 @@ h2 {
     border: .5px solid rgb(1,105,228) ;
     transition: .5s;}
 
+.viewJob{
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  background-color: rgb(66, 148, 241);
+  color: white;
+  font-size: 15px;
+  margin-top: 0px;
+  margin-right: 0px;
+  float: right; 
+}
 
+.buttonFilter{
+  width: 100px;
+  height: 30px;
+  /* border-radius: 20px; */
+  /* background-color: rgb(66, 148, 241); */
+  font-size: 15px;
+  margin-left:7px;
+  width: 110px;
+  height: 15%;
+}
 
 .button{
-    width: 380px;
-    height: 50px;
-    border-radius: 60px;
-    background-color: #3e42fa;
+    width: 100%;
+    height: 30px;
+    /* border-radius: 20px; */
+    background-color: rgb(66, 148, 241);
     color: white;
-    font-size: 25px;
-    border: none;
+    font-size: 15px;
+    /* border: none; */
+    margin-bottom:0px;
+    margin-left:0px;
+    /* float: bottom;  */
 }
+
 
 .link{
     font-size: 25px;

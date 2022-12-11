@@ -2,7 +2,7 @@
 import styles from "../page.module.css";
 import { useState, useEffect } from "react";
 import supabase from "../../utils/supabase";
-import Filters from "../../components/Filters";
+import Filters from "../../components/Filters"; 
 export const revalidate = 0; // revalidates on every request
 import { Link } from "next/link";
 // import "server-only";
@@ -13,12 +13,21 @@ async function getData() {
   // add error handling later
   // here we are getting all the data from the posts table
   const { data } = await supabase.from("posts").select("*");
-  return { data };
+  return { data }; 
+}
+
+function getNumDays(curr){
+  let days = Math.ceil(Math.abs(new Date() - new Date(curr)) / (1000 * 60 * 60 * 24));
+  if(days==0){
+    return "Today";
+  }
+  return days + " days ago";
 }
 
 // ! data should not be any, need to figure out the best way to declare it, line 15
 export default function Feed() {
   const [data, setData] = useState(null);
+  const [noResultsFound, setNoResultsFound] = useState(false);
   const [isDataDownloaded, setIsDataDownloaded] = useState(false);
   const [filters, setFilters] = useState({
     jobType:""
@@ -34,7 +43,7 @@ export default function Feed() {
 
   useEffect(() => {
     async function fetchData() {
-      const { data } = await supabase.from("posts").select("*");
+      const { data } = await supabase.from("posts").select("*").order('created_at', { ascending: false });
       // console.log(JSON.stringify(data));
       setIsDataDownloaded(true);
       setData(data);
@@ -44,50 +53,80 @@ export default function Feed() {
 
   const updateFilters = async (theFilters) => {
     console.log("filters: " + JSON.stringify(theFilters));
-    let query = supabase.from('posts').select('*');
+    let query = supabase.from('posts').select('*').order('created_at', { ascending: false });
 
     if(theFilters.jobType && theFilters.jobType.length > 0) {
       query = query.eq('jobType', theFilters.jobType);
     } 
+
+    if(theFilters.location && theFilters.location.length > 0) {
+      query = query.eq('location', theFilters.location);
+    } 
+
     if(theFilters.industry && theFilters.industry.length > 0) {
       query = query.eq('industry', theFilters.industry);
     } 
     if(theFilters.experience && theFilters.experience.length > 0) {
-      query = query.eq('experience', theFilters.experience);
+      query = query.eq('minExperience', theFilters.experience);
     } 
+
     const { data } = await query;
-    setIsDataDownloaded(true);
-    setData(data);
+
+    if(data==null){
+      setNoResultsFound(true);
+    }else{
+      setIsDataDownloaded(true);
+      setData(data);
+    }
+   
   }
-  // const { data } = await getData();
+
+  const applyNow = async () => {
+    
+  };
+
   return (
     <>
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          <a href="/">Job Opportunities</a>
-        </h1>
-        <div> <Filters updateFilters={updateFilters}/> </div>
-        <button onClick={updateFilters}>Filter</button>
-        {!isDataDownloaded && <div>hi</div>}
+        <h2 className={styles.title}>
+          <a href="/">Job Feed</a>
+        </h2>
+        <div>
+         <Filters updateFilters={updateFilters}/> 
+        </div>
+       
+        {/* <button onClick={updateFilters}>Filter</button> */}
+        {noResultsFound && <div>No Results Found</div>}
         {/* <Suspense fallback={<p>Loading</p>}> */}
-        {isDataDownloaded && <div className={styles.grid}>
-            {data.map((post) => (
+        {isDataDownloaded && !noResultsFound && <div className={styles.grid}>
+            {data && data.map((post) => (
               <div className={styles.grid} key={post.id}>
                 {/* // feed posts are displayed here  */}
-                <a href={`/feed/${post.id}`}>
                   <div className={styles.card}>
-                    <h1 className="card-title">{post.jobName}</h1>
-                    <h2>{post.institution}</h2>
-                    <h3>
-                      {post.isRemote} in {post.location}
-                    </h3>
-                    <p className="card-description"> {post.description}</p>
+                  <a href={`/feed/${post.id}`}>
+                      <button class="viewJob"> View Job </button>
+                  </a>
+                    <h2 className="card-title"> <b>{post.jobName} </b>   
+                    </h2>  
+                   
+                    <h3>{post.institution}</h3>
+                    <h3> {post.workPlaceType} in {post.location}</h3>
+
+                    <p> {post.compensation} {post.jobType} {post.schedule}</p>                   
+                    {/* <p className="card-description"> {post.description}</p> */}
                     <p className="card-headline"> {post.headline}</p>
-                    <p className="card-headline">
+                    {/* <p className="card-headline">
                       {post.created_by ? "Created by: " + post.created_by : ""}
-                    </p>
+                    </p> */}
+                    <p> Last Date to apply {post.applicationDeadline}</p>
+                    <h5> Posted  {getNumDays(post.created_at)} </h5>
+                    
+                    <a href={`/apply`}>
+                    <button class="button align-self-end" onClick={applyNow}> Apply Now </button>
+                    </a>
+                   
                   </div>
-                </a>
+                {/* </a> */} 
               </div>
             ))}
           </div>}

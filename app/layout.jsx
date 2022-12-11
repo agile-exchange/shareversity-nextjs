@@ -19,7 +19,7 @@ export default async function RootLayout({ children }) {
       <body>
         <div className={styles.navbar}>
           <Link className={styles.navitem} href="/">
-            Home
+           <b>Home</b> 
           </Link>
 
           <Link className={styles.navitem} href="/posts">
@@ -36,7 +36,7 @@ export default async function RootLayout({ children }) {
 
           {session ? (
             <Link className={styles.profile} href="/profile">
-              Profile
+              <b>Profile</b>
             </Link>
           ) : (
             <div className={styles.loginSignup}>

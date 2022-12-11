@@ -73,7 +73,7 @@
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 2200px;
+  max-width: 6200px;
 }
 
 /* added by jmatias */
@@ -87,12 +87,14 @@
 
 .subform {
   background-color: #d3d3d3;
+  /* background-color: rgb(66, 148, 241); */
   border: 1px solid #eaeaea;
   border-radius: 10px;
   padding: 1rem;
   margin: 1rem;
   width: 95%;
 }
+
 
 /* added by jmatias */
 .submit {
@@ -127,6 +129,7 @@
   margin: 0 2rem;
   font-size: 1.3rem;
   font-weight: 200;
+  font-weight: bold;
 }
 
 /* added by @andrew */
@@ -145,7 +148,9 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: #fff;
+  background-color: rgb(66, 148, 241);
+
+  /* background-color: rgb(28, 113, 210); */
 
   border-bottom: 1px solid #eaeaea;
 }
@@ -181,7 +186,7 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 450px;
-  height: 300px;  
+  height: 370px;  
 
 }
 
@@ -227,7 +232,7 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 10%;
+  margin-bottom: 2%;
 }
 .title a {
   background: linear-gradient(180deg, #0070f3 0%, #0153af 100%);

@@ -14,6 +14,8 @@ export default function Form() {
     description: "",
     headline: "",
     category: "",
+    minExperience: "",
+    industry: "",
     workPlaceType: "",
     jobType: "",
     duration: "",
@@ -39,6 +41,15 @@ export default function Form() {
     { value: 'js', label: 'js' },
     { value: 'C++', label: 'C++' },
     { value: 'NodeJs', label: 'CNodeJs' }
+  ]
+
+  const jobSchedule = [
+    { value: '8 hours shift', label: '8 hours shift' },
+    { value: 'Monday to Friday', label: 'Monday to Friday' },
+    { value: 'Weekend Availability', label: 'Weekend Availability' },
+    { value: 'No weekends', label: 'No weekends' },
+    { value: 'NightShift', label: 'NightShift' },
+    { value: 'Other', label: 'Other' },
   ]
 
   let inputStrings = [];
@@ -76,6 +87,7 @@ export default function Form() {
   const placeholder = "Enter Job Description..";
 
   const [skillsFinal, setSkillsFinal] = useState('');
+  const [scheduleFinal, setScheduleFinal] = useState('');
   const [showCompensation, setShowCompensation] = useState(false);  
   const [showNewCompensation, setShowNewCompensation] = useState(false);
 
@@ -87,6 +99,16 @@ export default function Form() {
 
     const str = value.join(',');
     setSkillsFinal(str);
+  };
+
+  const handleChangeSchedule = (e) => {
+    var value = [];
+    for (var i = 0, l = e.length; i < l; i++) {
+        value.push(e[i].value);
+    }
+
+    const str = value.join(',');
+    setScheduleFinal(str);
   };
 
   const [incorrectJDEntered, setIncorrectJDEntered] = useState(false);
@@ -158,6 +180,8 @@ export default function Form() {
         description: inputs.description,
         headline: headlineLength(inputs.headline),
         category: inputs.category,
+        minExperience: inputs.minExperience,
+        industry: inputs.industry,
         workPlaceType: inputs.workPlaceType,
         jobType: inputs.jobType,
         duration: inputs.duration,
@@ -234,7 +258,25 @@ export default function Form() {
             />
 
           </label>
+          <br />
 
+          <br />
+          <label>
+            Industry <br />
+            <select
+              required
+              className={styles.input}
+              name="industry"
+              value={inputs.industry || ""}
+              onChange={handleChange}
+            >
+              <option value="">Select Category</option>
+              <option value="IT Software">IT Software</option>
+              <option value="Finance">Finance</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
           <br />
           <br />
           <label>
@@ -298,16 +340,25 @@ export default function Form() {
             </select>
           </label>
           <br />
+
           <br />
           <label>
             Duration <br />
-            <input
+            <select
+              required
               className={styles.input}
-              type="text"
               name="duration"
               value={inputs.duration || ""}
               onChange={handleChange}
-            />
+            >
+              <option value="">Select Category</option>
+              <option value="3 months">3 months</option>
+              <option value="6 months">6 months</option>
+              <option value="8 months">8 months</option>
+              <option value="12 months">12 months</option>
+              <option value="Permanent">Permanent</option>
+              <option value="Other">Other</option>
+            </select>
           </label>
           <br />
           <br />
@@ -359,15 +410,37 @@ export default function Form() {
           <br />
           <br />
           <label>
-            Institution <br />
-            <input
+            Experience Required <br />
+            <select
               required
               className={styles.input}
-              type="text"
-              name="institution"
-              value={inputs.institution || ""}
+              name="minExperience"
+              value={inputs.minExperience || ""}
               onChange={handleChange}
-            />
+            >
+              <option value="">Select Category</option>
+              <option value="Fresher">Fresher</option>
+              <option value="1 year">1 year</option>
+              <option value="2 years">2 years</option>
+              <option value="3 years">3 years</option>
+              <option value="4 years">4 years</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+          <br />
+          <br />
+          <label>
+            Institution <br />
+            <select
+              className={styles.input}
+              name="academicLevel"
+              value={inputs.academicLevel || ""}
+              onChange={handleChange}
+            >
+              <option value="">Select Institution</option>
+              <option value="Harvard Extension">Harvard Extension</option>
+              <option value="Other">Other</option>
+            </select>
           </label>
           <br />
           <br />
@@ -412,32 +485,19 @@ export default function Form() {
           <div id="abcd"></div>
 
           <br />
-          {/* <br />
-          <label>
-            Skills <br />
-            <input
-              className={styles.input}
-              type="text"
-              name="skills"
-              value={inputs.skills || ""}
-              onChange={handleChange}
-            />
-          </label>
-
-          <br /> */}
           <br />
-
           <label>
             Schedule <br />
-            <input
-              className={styles.input}
-              type="text"
-              name="schedule"
-              value={inputs.schedule || ""}
-              onChange={handleChange}
+            <Select
+                isMulti
+                name="skills"
+                options={jobSchedule}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                onChange={handleChangeSchedule}
             />
           </label>
-          <br />
+          <br/>
           <br />
           <label>
           Compensation Type <br />
@@ -459,7 +519,7 @@ export default function Form() {
           <br />
           <br />
           {showCompensation &&  <label>
-            Compensation <br />
+            Enter Compensation<br />
             <input
               className={styles.input}
               type="text"
@@ -468,16 +528,6 @@ export default function Form() {
               onChange={handleChange}
             />
           </label>}
-          {/* <label>
-            Compensation <br />
-            <input
-              className={styles.input}
-              type="text"
-              name="compensation"
-              value={inputs.compensation || ""}
-              onChange={handleChange}
-            />
-          </label> */}
           <br />
           {showNewCompensation &&  <label>
             Add Compensation Type <br />
