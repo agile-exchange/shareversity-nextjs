@@ -41,7 +41,44 @@ export default function Form() {
     { value: 'NodeJs', label: 'CNodeJs' }
   ]
 
+  let inputStrings = [];
+ 
+ // create a function to handle the button click
+ const handleButtonClick = () => {
+   // get the value from the input box
+   let inputValue = document.getElementById('inputBox').value;
+   if(inputValue.length === 0) {
+       return;
+   }
+  
+   // add the input value to the array of input strings
+   inputStrings.push(inputValue);
+  
+   // clear the input box
+   document.getElementById('inputBox').value = '';
+  
+ 
+   ////
+   // create a new button element
+ var button = document.createElement("button");
+ 
+ // set the text of the button
+ button.innerText = inputValue;
+ 
+ // get the div element with the id "mydiv"
+ var div = document.getElementById("abcd");
+ 
+ // add the button to the div element
+ div.appendChild(button);
+ };
+
+
+  const placeholder = "Enter Job Description..";
+
   const [skillsFinal, setSkillsFinal] = useState('');
+  const [showCompensation, setShowCompensation] = useState(false);  
+  const [showNewCompensation, setShowNewCompensation] = useState(false);
+
   const handleChangeSkills = (e) => {
     var value = [];
     for (var i = 0, l = e.length; i < l; i++) {
@@ -78,6 +115,20 @@ export default function Form() {
     const value = event.target.value;
     console.log("name: " + name);
     console.log("value: " + value);
+
+    if(name=="compensationType"){
+      if(value=="Paid"){
+        setShowCompensation(true);
+      }else{
+        setShowCompensation(false);
+      }
+
+      if(value=="Other"){
+        setShowNewCompensation(true);
+      }else{
+        setShowNewCompensation(false);
+      }
+    }
     setInputs((values) => ({ ...values, [name]: value }));
   };
   const router = useRouter();
@@ -98,6 +149,8 @@ export default function Form() {
       return;
     }
     fetchProfile();
+    const skillsNew = skillsFinal+","+inputStrings.join(",");
+    console.log("skillsNew:" + skillsNew);
     // send data to supabase
     const { data, error } = await supabase.from("posts").insert([
       {
@@ -112,7 +165,7 @@ export default function Form() {
         academicLevel: inputs.academicLevel,
         isRemote: inputs.isRemote,
         location: inputs.location,
-        skills: skillsFinal,
+        skills: skillsNew,
         schedule: inputs.schedule,
         institution: inputs.institution,
         department: inputs.department,
@@ -177,6 +230,7 @@ export default function Form() {
               wrapperStyle={{ width: 760, border: "1px solid black" }}
               value={inputs.description || ""}
               onEditorStateChange={handleChangeEditor}
+              placeholder={placeholder}
             />
 
           </label>
@@ -307,6 +361,7 @@ export default function Form() {
           <label>
             Institution <br />
             <input
+              required
               className={styles.input}
               type="text"
               name="institution"
@@ -352,6 +407,10 @@ export default function Form() {
                 onChange={handleChangeSkills}
             />
           </label>
+          <input type="text" id="inputBox" />
+               <button type="button" id="button" onClick={handleButtonClick}>add more Skills!</button>
+          <div id="abcd"></div>
+
           <br />
           {/* <br />
           <label>
@@ -399,7 +458,7 @@ export default function Form() {
           </label>
           <br />
           <br />
-          <label>
+          {showCompensation &&  <label>
             Compensation <br />
             <input
               className={styles.input}
@@ -408,8 +467,28 @@ export default function Form() {
               value={inputs.compensation || ""}
               onChange={handleChange}
             />
-          </label>
-
+          </label>}
+          {/* <label>
+            Compensation <br />
+            <input
+              className={styles.input}
+              type="text"
+              name="compensation"
+              value={inputs.compensation || ""}
+              onChange={handleChange}
+            />
+          </label> */}
+          <br />
+          {showNewCompensation &&  <label>
+            Add Compensation Type <br />
+            <input
+              className={styles.input}
+              type="text"
+              name="newCompensation"
+              value={inputs.newCompensation || ""}
+              onChange={handleChange}
+            />
+          </label>}
           <br />
           </div>
           <br />

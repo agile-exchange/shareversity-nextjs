@@ -1,9 +1,12 @@
+"use client"
 import styles from "../page.module.css";
+import { useState, useEffect } from "react";
 import supabase from "../../utils/supabase";
+import Filters from "../../components/Filters";
 export const revalidate = 0; // revalidates on every request
 import { Link } from "next/link";
 // import "server-only";
-import { Suspense } from "react";
+// import { Suspense } from "react";
 
 // Fetches data on each request
 async function getData() {
@@ -14,18 +17,62 @@ async function getData() {
 }
 
 // ! data should not be any, need to figure out the best way to declare it, line 15
-export default async function Feed() {
-  const { data } = await getData();
+export default function Feed() {
+  const [data, setData] = useState(null);
+  const [isDataDownloaded, setIsDataDownloaded] = useState(false);
+  const [filters, setFilters] = useState({
+    jobType:""
+  });
+
+  console.log("hi1");
+
+  // useEffect(async () => {
+  //   const { data } = await supabase.from("posts").select("*");
+  //   console.log(JSON.stringify(data));
+    
+  // }, [])
+
+  useEffect(() => {
+    async function fetchData() {
+      const { data } = await supabase.from("posts").select("*");
+      // console.log(JSON.stringify(data));
+      setIsDataDownloaded(true);
+      setData(data);
+    }
+    fetchData();
+  }, []); // Or [] if effect doesn't need props or state
+
+  const updateFilters = async (theFilters) => {
+    console.log("filters: " + JSON.stringify(theFilters));
+    let query = supabase.from('posts').select('*');
+
+    if(theFilters.jobType && theFilters.jobType.length > 0) {
+      query = query.eq('jobType', theFilters.jobType);
+    } 
+    if(theFilters.industry && theFilters.industry.length > 0) {
+      query = query.eq('industry', theFilters.industry);
+    } 
+    if(theFilters.experience && theFilters.experience.length > 0) {
+      query = query.eq('experience', theFilters.experience);
+    } 
+    const { data } = await query;
+    setIsDataDownloaded(true);
+    setData(data);
+  }
+  // const { data } = await getData();
   return (
     <>
       <main className={styles.main}>
         <h1 className={styles.title}>
           <a href="/">Job Opportunities</a>
         </h1>
-        <Suspense fallback={<p>Loading</p>}>
-          <div className={styles.grid}>
+        <div> <Filters updateFilters={updateFilters}/> </div>
+        <button onClick={updateFilters}>Filter</button>
+        {!isDataDownloaded && <div>hi</div>}
+        {/* <Suspense fallback={<p>Loading</p>}> */}
+        {isDataDownloaded && <div className={styles.grid}>
             {data.map((post) => (
-              <div className={styles.grid}>
+              <div className={styles.grid} key={post.id}>
                 {/* // feed posts are displayed here  */}
                 <a href={`/feed/${post.id}`}>
                   <div className={styles.card}>
@@ -43,8 +90,9 @@ export default async function Feed() {
                 </a>
               </div>
             ))}
-          </div>
-        </Suspense>
+          </div>}
+          
+        {/* </Suspense> */}
       </main>
     </>
   );
