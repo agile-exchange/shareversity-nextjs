@@ -4,9 +4,6 @@ import { useState, useEffect } from "react";
 import supabase from "../../utils/supabase";
 import Filters from "../../components/Filters"; 
 export const revalidate = 0; // revalidates on every request
-import { Link } from "next/link";
-// import "server-only";
-// import { Suspense } from "react";
 
 // Fetches data on each request
 async function getData() {
@@ -26,20 +23,13 @@ function getNumDays(curr){
 
 // ! data should not be any, need to figure out the best way to declare it, line 15
 export default function Feed() {
+  console.log("mlocal: "+ process.env.AAA);
   const [data, setData] = useState(null);
   const [noResultsFound, setNoResultsFound] = useState(false);
   const [isDataDownloaded, setIsDataDownloaded] = useState(false);
   const [filters, setFilters] = useState({
     jobType:""
   });
-
-  console.log("hi1");
-
-  // useEffect(async () => {
-  //   const { data } = await supabase.from("posts").select("*");
-  //   console.log(JSON.stringify(data));
-    
-  // }, [])
 
   useEffect(() => {
     async function fetchData() {
@@ -103,24 +93,25 @@ export default function Feed() {
               <div className={styles.grid} key={post.id}>
                 {/* // feed posts are displayed here  */}
                   <div className={styles.card}>
-                  <a href={`/feed/${post.id}`}>
-                      <button class="viewJob"> View Job </button>
-                  </a>
+                    <a href={`/feed/${post.id}`}>
+                        <button class="viewJob"> View Job </button>
+                    </a>
                     <h2 className="card-title"> <b>{post.jobName} </b>   
                     </h2>  
-
                     <hr class="new1"></hr>
-                   
                     <h3>{post.institution}</h3>
                     <h3> {post.workPlaceType} in {post.location}</h3>
-
-                    <p> {post.compensation} {post.jobType} {post.schedule}</p>                   
+                    <br />
+                    <p> {post.compensation} {post.jobType} {post.schedule}</p>   
+                    <br />                
                     {/* <p className="card-description"> {post.description}</p> */}
                     <p className="card-headline"> {post.headline}</p>
                     {/* <p className="card-headline">
                       {post.created_by ? "Created by: " + post.created_by : ""}
                     </p> */}
+                    <br />
                     <p> Last Date to apply {post.applicationDeadline}</p>
+                    <br />
                     <h5> Posted  {getNumDays(post.created_at)} </h5>
                     {/* <a href={`/apply/${post.created_by}`}>
                     <button class="button"> Apply Now </button>

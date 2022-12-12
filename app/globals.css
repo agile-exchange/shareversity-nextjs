@@ -17,6 +17,11 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.boxed {
+  border: 1px solid green ;
+  width: fit-content;
+}
+
 /* 
 @media (prefers-color-scheme: dark) {
   html {
@@ -272,10 +277,10 @@ h2 {
   width: 100px;
   height: 30px;
   /* border-radius: 20px; */
-  /* background-color: rgb(66, 148, 241); */
+  background-color: rgb(66, 148, 241);
   font-size: 15px;
   margin-left:7px;
-  width: 110px;
+  width: 90px;
   height: 15%;
 }
 
@@ -286,9 +291,10 @@ h2 {
     background-color: rgb(66, 148, 241);
     color: white;
     font-size: 15px;
+    /* margin-left:10px; */
     /* border: none; */
     /* margin-bottom:0px;
-    margin-left:0px; */
+   
     /* float: bottom;  */
     bottom: 0;
 }

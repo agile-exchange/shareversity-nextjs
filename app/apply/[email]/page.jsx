@@ -19,14 +19,9 @@ async function applyNow(email) {
          }
       ],
       "from":{
-         "email":"princyverma589@gmail.com",
-         "name":"Simple-service-Bot"
+         "email":process.env.SEND_GRID_FROM_EMAIL,
+         "name":"Sharversity-Bot"
       }
-    //   ,
-    //   "reply_to":{
-    //      "email":"sam.smith@example.com",
-    //      "name":"Sam Smith"
-    //   }
     };
     
          var axios = require("axios").default;
@@ -34,9 +29,7 @@ async function applyNow(email) {
          var options = {
          method: 'POST',
          url: 'https://api.sendgrid.com/v3/mail/send',
-         headers: {Authorization: 'Bearer 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',
-         // headers: {Authorization: 'Bearer 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',
-
+         headers: {Authorization: 'Bearer ' + process.env.SEND_GRID_API_KEY,
          
          'Content-Type': 'application/json'},
          data: JSON.stringify(m2)
@@ -52,10 +45,10 @@ async function applyNow(email) {
 
 
 export default async function Apply({params}) {
-
-   // console.log("email: " + params.email);
-   // console.log("decodeURIComponent " + decodeURIComponent(params.email));
-    const result = await applyNow(decodeURIComponent(params.email));
+   let result = {};
+   if(params.email.length!=0 && process.env.SEND_GRID_API_KEY.length>0){
+     result = await applyNow(decodeURIComponent(params.email));
+   }
 
     console.log("result response: " + result.status);
 
