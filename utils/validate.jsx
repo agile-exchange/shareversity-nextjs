@@ -106,12 +106,43 @@ export function validateSchedule(comp){
   return "Valid Schedule entered";
 }
 
+export function validateLocation(location){
+  var result = /\d/.test(location);
+  if(result){
+    return "Invalid Location, must contain valid Location not number";
+  }
+  return "Valid Location";
+}
+
+export function validateApplicationDeadline(deadline){
+  var currDate = new Date();
+
+  const myArray = deadline.split("-");
+
+  if(myArray[0] < currDate.getFullYear() ||
+        myArray[1] < currDate.getMonth() ||
+        myArray[2] < currDate.getDate()) {
+    return "Invalid Application deadline, deadline can't before todays date";
+  }
+  return "Valid Application Deadline";
+}
+
+//validateDuration
+
+export function validateDuration(duration){
+  if(duration<30){
+    return "Please enter a valid input, duration can't be less than a month";
+  }
+  return "Duration is valid";
+}
+
 export function validateLoginEmail(email) {
   if(email.trim().length === 0) {
       return "Email cant be empty"; 
   }  
   return "true";
 }
+
 
 export function validateLoginPassword(password) {
   if(password.trim().length === 0) {

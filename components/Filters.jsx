@@ -15,6 +15,7 @@ export default function Filters(props) {
                   location: "",
                   industry: "",
                   experience: "",
+                  field: "",
                 });
         
     const filterData = async () => {
@@ -66,6 +67,30 @@ export default function Filters(props) {
             <option value="Finance">Finance</option>
             <option value="Marketing">Marketing</option>
           </select>
+
+          <select className="filterBox"
+            name=""
+            id=""
+            value={filters.field}
+            onChange={(e) => setFilters({ ...filters, field: e.target.value })}
+          >
+            <option value="">Job Field</option>
+            <option value="Bioinformatics">Bioinformatics</option>
+            <option value="Biomedicine">Biomedicine</option>
+            <option value="Computer Scicence">Computer Scicence</option>
+            <option value="Earth and Planetary Science">Earth and Planetary Science</option>
+            <option value="Epidemiology">Epidemiology</option>
+            <option value="Endocrinology">Endocrinology</option>
+            <option value="Genetics">Genetics</option>
+            <option value="Gerontology">Gerontology</option>
+            <option value="Microbiology">Microbiology</option>
+            <option value="Medicine">Medicine</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Nanotechnology">Nanotechnology</option>
+            <option value="Pharmacology">Pharmacology</option>
+            <option value="Physics">Physics</option>
+            <option value="Social Science">Social Science</option>
+          </select>
   
           <select className="filterBox"
             name=""
@@ -84,14 +109,18 @@ export default function Filters(props) {
           </select>
           <button className="primary-outlined-btn buttonFilter" onClick={() => {
           filterData({
+            jobType:"",
             location:"",
             industry:"",
-            experience:""
+            experience:"",
+            field:""
         })
          setFilters({
+            jobType:"",
             location:"",
             industry:"",
-            experience:""
+            experience:"",
+            field:""
          })
         }}>
           CLEAR

@@ -70,6 +70,9 @@ export default function Feed() {
       query = query.eq('minExperience', theFilters.experience);
     } 
 
+    if(theFilters.field && theFilters.field.length > 0) {
+      query = query.eq('field', theFilters.field);
+    } 
     const { data } = await query;
 
     if(data==null){
@@ -81,9 +84,6 @@ export default function Feed() {
    
   }
 
-  const applyNow = async () => {
-    
-  };
 
   return (
     <>
@@ -108,6 +108,8 @@ export default function Feed() {
                   </a>
                     <h2 className="card-title"> <b>{post.jobName} </b>   
                     </h2>  
+
+                    <hr class="new1"></hr>
                    
                     <h3>{post.institution}</h3>
                     <h3> {post.workPlaceType} in {post.location}</h3>
@@ -120,11 +122,10 @@ export default function Feed() {
                     </p> */}
                     <p> Last Date to apply {post.applicationDeadline}</p>
                     <h5> Posted  {getNumDays(post.created_at)} </h5>
-                    
-                    <a href={`/apply`}>
-                    <button class="button align-self-end" onClick={applyNow}> Apply Now </button>
-                    </a>
-                   
+                    {/* <a href={`/apply/${post.created_by}`}>
+                    <button class="button"> Apply Now </button>
+                    </a> */}
+                    {/* <div id="buttontest">Bottom Content Div</div> */}
                   </div>
                 {/* </a> */} 
               </div>

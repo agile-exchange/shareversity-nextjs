@@ -1,6 +1,6 @@
 import { assert, describe, expect, it } from "vitest";
 import { titleCase, headlineLength, validateStringNotEmpty, validateApplicationLink, validateCompensation, 
-  validateFormData, validateSchedule} from "../utils/validate";
+  validateFormData, validateSchedule, validateLocation, validateApplicationDeadline, validateDuration} from "../utils/validate";
 
 describe("validate job title", () => {
   it("should convert to camel case, when text is entered", () => {
@@ -126,6 +126,75 @@ describe("Validate Schedule ", () => {
     expect(result).toBe("Valid Schedule entered");
   });
 });
+
+describe("Validate Location ", () => {
+  it("should return an error message, if Location is an empty string", () => {
+    const input = "";
+    var result = validateStringNotEmpty(input);
+    expect(result).toBe("Invalid input - must not be empty");
+  });
+
+  it("should return an error message, if Location contain number", () => {
+    const input = "1234";
+    var result = validateLocation(input);
+    expect(result).toBe("Invalid Location, must contain valid Location not number");
+  });
+
+  it("should return success mesg, if Location is a valid location", () => {
+    const input = "Boston";
+    var result = validateLocation(input);
+    expect(result).toBe("Valid Location");
+  });
+});
+
+describe("Validate Skills ", () => {
+  it("should return an error message, if skill field is an empty string", () => {
+    const input = "";
+    var result = validateStringNotEmpty(input);
+    expect(result).toBe("Invalid input - must not be empty");
+  });  
+});
+
+describe("Validate Application Deadline ", () => {
+  it("should return an error message, if Application Deadline is an empty string", () => {
+    const input = "";
+    var result = validateStringNotEmpty(input);
+    expect(result).toBe("Invalid input - must not be empty");
+  });
+
+  it("should return an error message, if application deadline is before current date", () => {
+    const input = "2022-01-05";
+    var result = validateApplicationDeadline(input);
+    expect(result).toBe("Invalid Application deadline, deadline can't before todays date");
+  });
+
+  it("should return success, if application deadline valid and after current date", () => {
+    const input = "2022-12-26";
+    var result = validateApplicationDeadline(input);
+    expect(result).toBe("Valid Application Deadline");
+  });
+});
+
+describe("Validate Duration", () => {
+  it("should return an error message, if Duration is an empty string", () => {
+    const input = "";
+    var result = validateStringNotEmpty(input);
+    expect(result).toBe("Invalid input - must not be empty");
+  });
+
+  it("should return an error message, if Duration is less than a month", () => {
+    const input = "20";
+    var result = validateDuration(input);
+    expect(result).toBe("Please enter a valid input, duration can't be less than a month");
+  });
+
+  it("should return a success message, if Duration is valid", () => {
+    const input = "2 months";
+    var result = validateDuration(input);
+    expect(result).toBe("Duration is valid");
+  });
+});
+
 
 // write a function that returns the letter "a" 100 times
 function return100a() {
