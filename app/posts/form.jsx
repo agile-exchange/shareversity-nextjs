@@ -242,24 +242,21 @@ export default function Form() {
           </label>
           <br />
           <br />
-
+          
           <label>
-            Job Description <br />
-            { incorrectJDEntered && <label className="incorrectjd">Job Description cannot be empty <br /></label> }
-             <Editor
-              toolbarClassName="toolbarClassName"
-              wrapperClassName="wrapperClassName"
-              editorClassName="editorClassName"
+          Job Description  <br />
+            <input
+              required
+              className={styles.input}
+              type="text"
               name="description"
-              wrapperStyle={{ width: 760, border: "1px solid black" }}
               value={inputs.description || ""}
-              onEditorStateChange={handleChangeEditor}
-              placeholder={placeholder}
+              onChange={handleChange}
             />
-
           </label>
           <br />
 
+          
           <br />
           <label>
             Industry <br />
