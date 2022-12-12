@@ -5,7 +5,7 @@ import '../../App.css';
 import StudentCard from '../../components/StudentCard';
 import SearchInput from '../../components/SearchInput';
 import SearchTag from '../../components/SearchTag';
-
+import styles from "../page.module.css";
 
 export default function Search (){
    const [data, setData] = useState([]);
@@ -53,7 +53,9 @@ export default function Search (){
     }
   };
    return (<>
-ProfileUpdate
+<h1 className={styles.title}>
+Profile Directory
+        </h1>
       <SearchInput searchItems={searchItems} setNameSearchInput={setNameSearchInput} />
       <SearchTag searchTags={searchTags} setTagSearchInput={setTagSearchInput} />
       <div className="main">

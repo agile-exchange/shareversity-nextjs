@@ -59,7 +59,6 @@ export default function StudentCard({
               <p>Email: {email}</p>
               <p>Company: {company}</p>
               <p>Skill: {skill}</p>
-              <p>Average: {average(grades)}%</p>
             </div>
           </div>
           <div className="tag">
@@ -77,13 +76,6 @@ export default function StudentCard({
                 onChange={(e) => setTagInput(e.target.value)}
               />
             </form>
-          </div>
-          <div className={open === false ? 'test-close' : 'test'}>
-            {grades.map((score, i) => (
-              <p key={i}>
-                Test{i + 1}: <span className="score">{score}%</span>
-              </p>
-            ))}
           </div>
         </div>
       </div>
