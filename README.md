@@ -494,13 +494,13 @@ Changes to the board throughout the sprint, which updated the burndown chart aut
   ![Screen Shot 2022-12-05 at 3 59 58 PM](https://user-images.githubusercontent.com/104920023/207126138-38f2de66-2459-4281-a7e1-9cf0699be47c.png)
 
 **Test-Drive Development**
-![image](https://user-images.githubusercontent.com/20470020/204352761-6ba2dc72-0be8-47cf-b891-f7e5da6d42ef.png)
+![image](https://user-images.githubusercontent.com/20470020/207137158-42bcad10-c239-4137-94e6-73937330e28b.png)
 ![image](https://user-images.githubusercontent.com/20470020/204198797-b98383ee-1500-4498-b7b1-04e725c76b2f.png)
 ![image](https://user-images.githubusercontent.com/20470020/204198846-51b2e125-e60e-4125-92bd-fd35c11876ff.png)
 
 All other Screenshots providing evidence of Test-Driven Development can be found in [this folder](https://drive.google.com/drive/folders/1XcanLlRImA2NmtFjIeXz42Qg8A1XwzFD).
 
-We wrote 40 test cases below is the link,
+We wrote 42 test cases below is the link,
 <br /> **TDD Test Cases** 
   <br />[link]: (https://github.com/agile-exchange/shareversity-nextjs/blob/main/test/form.test.js)
   <br />[link]: (https://github.com/agile-exchange/shareversity-nextjs/blob/main/test/signup.test.js)
